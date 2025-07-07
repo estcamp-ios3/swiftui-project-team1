@@ -30,7 +30,8 @@ struct QuizCardSection: View {
             Text("어떤 유형으로 풀어볼까요?")
                 .font(.title)
                 .fontWeight(.bold)
-                .padding(.bottom, 12)
+                .padding(.bottom, 8)
+                .padding(.top, 16)
             HStack {
                 //기출문제 바로가기
                 NavigationLink{
@@ -78,13 +79,6 @@ struct QuizCardSection: View {
                     .cardStyle()
                 }
             }
-        }
-        // 시트 프리젠테이션
-        .sheet(isPresented: $showingTenTestView) {
-            TenTestView()
-        }
-        .sheet(isPresented: $showingMockTestView) {
-            MockTestView()
         }
     }
 }

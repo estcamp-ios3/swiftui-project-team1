@@ -28,7 +28,7 @@ struct HomeView: View {
                                 .frame(height: 150)
                             
                             if showSections {
-                                VStack(spacing: 32) {
+                                VStack(spacing: 24) {
                                     
                                     QuizCardSection() // 문제풀이 버튼 뷰
                                     
