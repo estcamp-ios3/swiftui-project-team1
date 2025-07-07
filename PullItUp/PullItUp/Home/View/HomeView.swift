@@ -92,6 +92,8 @@ struct HomeView: View {
                             VStack(spacing: 24) {
                                 QuizCardSection()
                                 AdBannerSection()
+                                ReceptionSection()
+                                HistorySection()
                             }
                             .transition(.opacity)
                             .animation(.easeInOut(duration: 0.3), value: showSections)

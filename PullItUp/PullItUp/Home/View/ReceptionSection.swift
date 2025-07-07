@@ -9,7 +9,10 @@ import SwiftUI
 
 struct ReceptionSection: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            Text("어떤 유형으로 풀어볼까요?")
+            
+        }
     }
 }
 
