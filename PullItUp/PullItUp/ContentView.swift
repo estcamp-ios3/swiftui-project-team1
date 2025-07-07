@@ -17,7 +17,7 @@ struct ContentView: View {
         // 탭 개발 맡으신 분들은,
         TabView {
             Tab("홈", systemImage: "house") {
-                Text("홈 화면")
+                HomeView()
             }
             
             Tab("통계", systemImage: "square.and.pencil") {
