@@ -12,104 +12,53 @@ struct HomeView: View {
     @State private var selectedLicense: String? = nil  // nil이면 미선택 상태
     @State private var showSections: Bool = true
     
-    // 자격증 종류- dummy
-    let licenses = ["정보처리기사", "정보보안기사", "산업안전기사"]
-    
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            VStack(spacing: 0) {
-                ZStack(alignment: .bottom) {
-                    VStack(spacing: 0) {
-                        VStack(spacing: 12) {
-                            if let license = selectedLicense {
-                                // 선택 후 UI
-                                VStack {
-                                    Spacer()
-                                    Spacer()
-                                    Text(license)
-                                        .font(.title)
-                                        .fontWeight(.bold)
-                                        .offset(y: selectedLicense != nil ? 0 : -50)
-                                    Spacer()
-                                    Spacer()
-                                    Text("다른 자격증으로 변경하시겠어요?")
-                                        .foregroundColor(.gray)
-                                        .offset(y: selectedLicense != nil ? 0 : -30)
+        NavigationStack {
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack(spacing: 0) {
+                    ZStack(alignment: .bottom) {
+                        VStack(spacing: 0) {
+                            
+                            // 자격증 선택 뷰
+                            HomeSubView(selectedLicense: $selectedLicense)
+                            
+                            Image("homeBg")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(height: 150)
+                            
+                            if showSections {
+                                VStack(spacing: 32) {
                                     
-                                    Picker("자격증", selection: $selectedLicense) {
-                                        ForEach(licenses, id: \.self) { itemLicense in
-                                            Text(itemLicense).tag(Optional(itemLicense))
-                                        }
-                                    }
-                                    .pickerStyle(.menu)
-                                    .foregroundColor(.blue)
-                                }
-                                .frame(height: 120)
-                                .clipped()
-                                .animation(.easeInOut(duration: 0.2), value: selectedLicense)
-                            } else {
-                                // 선택 전 UI
-                                VStack(spacing: 20) {
-                                    Spacer()
-                                    Spacer()
-                                    Text("어떤 자격증 문제를 풀어볼까요?")
-                                        .font(.largeTitle)
-                                        .fontWeight(.bold)
-                                        .multilineTextAlignment(.center)
-                                        .offset(y: selectedLicense != nil ? 0 : 70)
-                                    Spacer()
-                                    Spacer()
-                                    Text("자격증을 선택해주세요")
-                                        .foregroundColor(.gray)
-                                        .offset(y: selectedLicense != nil ? 0 : 10)
+                                    QuizCardSection() // 문제풀이 버튼 뷰
                                     
-                                    Picker("자격증", selection:$selectedLicense ) {
-                                        Text("기능사 / 산업기사 / 기사").tag(nil as String?)
-                                        ForEach(licenses, id: \.self) {license in
-                                            Text(license).tag(Optional(license))
-                                        }
-                                    }
-                                    .pickerStyle(.menu)
-                                    .foregroundColor(.blue)
-                                    Spacer()
+                                    AdBannerSection() // 광고 배너 뷰
+                                    
+                                    LicenseInfoSection() // 원서접수안내 뷰
+                                    
+                                    HistorySection() // 이력관리 뷰
                                 }
-                                .frame(height: 560)
-                                .clipped()
-                                .animation(.easeInOut(duration: 0.2), value: selectedLicense)
+                                .transition(.opacity)
+                                .animation(.easeInOut(duration: 0.3), value: showSections)
                             }
                         }
-                        .layoutPriority(1)
-                        Image("homeBg")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(height: 150)
-                        //                        if let license = selectedLicense {
-                        //                            withLicenseSelected(license)
-                        //                                .transition(.move(edge: .bottom).combined(with: .opacity))
-                        //                                .animation(.easeInOut(duration: 0.3), value: selectedLicense)
-                        //                        }
-                        if selectedLicense != nil {
-                            VStack(spacing: 24) {
-                                QuizCardSection()
-                                AdBannerSection()
-                                ReceptionSection()
-                                HistorySection()
-                            }
-                            .transition(.opacity)
-                            .animation(.easeInOut(duration: 0.3), value: showSections)
-                        }
+                        .padding(.horizontal)
+                        .padding(.top, 30)
+                        
                     }
-                    .padding(.horizontal)
-                    .padding(.top, 30)
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
+                    .animation(.easeInOut(duration: 0.3), value: selectedLicense)
+                    
                 }
-                .transition(.move(edge: .bottom).combined(with: .opacity))
-                .animation(.easeInOut(duration: 0.3), value: selectedLicense)
-                
             }
+            .background(Color.white)
+            .onChange(of: selectedLicense) {
+                withAnimation {
+                    showSections = (selectedLicense != nil)
+                }
+            }
+            //scrollView
         }
-        .background(Color.white)
-        
-        //scrollView
     }
 }
 
