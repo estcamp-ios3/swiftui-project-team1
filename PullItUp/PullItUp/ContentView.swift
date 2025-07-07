@@ -25,7 +25,9 @@ struct ContentView: View {
             }
             
             Tab("더보기", systemImage: "square.and.pencil") {
-                Text("더보기")
+                NavigationStack{
+                    Seemore()
+                }
             }
         }
     }
