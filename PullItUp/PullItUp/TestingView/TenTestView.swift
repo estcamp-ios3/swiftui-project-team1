@@ -69,10 +69,10 @@ struct TenTestView: View {
                 Button(action: {}) {
                     Image(systemName: "chevron.left.circle.fill")
                         .resizable()
-                        .frame(width: 45, height: 45)
+                        .frame(width: 50, height: 50)
                 }
 
-                Spacer().frame(width: 25)
+                Spacer().frame(width: 28)
 
                 Button(action: {
                     if showHint {
@@ -91,7 +91,7 @@ struct TenTestView: View {
                         .cornerRadius(10)
                 }
 
-                Spacer().frame(width: 16)
+                Spacer().frame(width: 11)
 
                 Button(action: {
                     if showAnswer {
@@ -110,14 +110,15 @@ struct TenTestView: View {
                         .cornerRadius(10)
                 }
 
-                Spacer().frame(width: 25)
+                Spacer().frame(width: 28)
 
                 Button(action: {}) {
                     Image(systemName: "chevron.right.circle.fill")
                         .resizable()
-                        .frame(width: 45, height: 45)
+                        .frame(width: 50, height: 50)
                 }
             }
+            .padding(.bottom, 15)
         }
     }
 

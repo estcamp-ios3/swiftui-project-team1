@@ -31,7 +31,7 @@ struct QuizDataView: View {
                                 Spacer()
                             }
                             .padding(13)
-                            .background(Color.gray.opacity(0.1))
+                            .background(Color(red: 0.9, green: 0.9, blue: 0.9))
                             .cornerRadius(10)
                         }
                         .padding(.horizontal, 16)

@@ -37,14 +37,8 @@ struct MockTestView: View {
 
                 ScrollView {
                     VStack(alignment: .leading, spacing: 0) {
-                        Text("Q1.")
-                            .font(.title)
-                            .bold(true)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Text("문제 내용")
-                            .padding(.top, 10)
+                        QuizDataView()
                     }
-                    .padding()
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
@@ -58,7 +52,7 @@ struct MockTestView: View {
                 Button(action: {}) {
                     Image(systemName: "chevron.left.circle.fill")
                         .resizable()
-                        .frame(width: 45, height: 45)
+                        .frame(width: 50, height: 50)
                 }
             
             Spacer().frame(width: 250)
@@ -66,9 +60,9 @@ struct MockTestView: View {
                 Button(action: {}) {
                     Image(systemName: "chevron.right.circle.fill")
                         .resizable()
-                        .frame(width: 45, height: 45)
+                        .frame(width: 50, height: 50)
                 }
-        }
+        }.padding(.bottom, 15)
     }
 
     var formatTime: String {
