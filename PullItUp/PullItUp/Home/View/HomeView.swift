@@ -18,6 +18,8 @@ struct HomeView: View {
                 VStack(spacing: 0) {
                     ZStack(alignment: .bottom) {
                         VStack(spacing: 0) {
+                            
+                            // 자격증 선택 뷰
                             HomeSubView(selectedLicense: $selectedLicense)
                             
                             Image("homeBg")
@@ -26,11 +28,15 @@ struct HomeView: View {
                                 .frame(height: 150)
                             
                             if showSections {
-                                VStack(spacing: 24) {
-                                    QuizCardSection()
-                                    AdBannerSection()
-                                    ReceptionSection()
-                                    HistorySection()
+                                VStack(spacing: 32) {
+                                    
+                                    QuizCardSection() // 문제풀이 버튼 뷰
+                                    
+                                    AdBannerSection() // 광고 배너 뷰
+                                    
+                                    LicenseInfoSection() // 원서접수안내 뷰
+                                    
+                                    HistorySection() // 이력관리 뷰
                                 }
                                 .transition(.opacity)
                                 .animation(.easeInOut(duration: 0.3), value: showSections)

@@ -10,10 +10,12 @@ import SwiftUI
 extension View {
     func cardStyle() -> some View {
         self
-            .padding(10)
+            .padding()
+            .padding(.horizontal, 1)
             .frame(maxWidth: .infinity)
             .background(Color.secondary.opacity(0.2))
             .cornerRadius(12)
+            .buttonStyle(.plain)
     }
 }
 
@@ -39,21 +41,19 @@ struct QuizCardSection: View {
                             Text("기출문제")
                                 .font(.title2)
                                 .fontWeight(.bold)
-                                .foregroundStyle(.primary)
-                                .foregroundColor(.black)
+                                .foregroundColor(.primary)
                             Text("10문제씩 풀기")
-                                .font(.title3)
+                                .font(.body)
                                 .foregroundColor(.gray)
                         }
                         Spacer()
                         Image(systemName: "chevron.right")
-                            .padding(5)
                             .foregroundColor(.secondary)
                         
                     }
                     .cardStyle()
                 }
-                .buttonStyle(.plain)
+                
                 
                 //모의고사 바로가기
                 NavigationLink{
@@ -64,21 +64,19 @@ struct QuizCardSection: View {
                             Text("모의고사")
                                 .font(.title2)
                                 .fontWeight(.bold)
-                                .foregroundStyle(.primary)
-                                .foregroundColor(.black)
-                            Text("60문제 풀기")
-                                .font(.title3)
+                                .foregroundColor(.primary)
+                            Text("60문제 한번에 풀기")
+                                .font(.body)
                                 .lineLimit(1)
+                                .kerning(-0.75)
                                 .foregroundColor(.gray)
                         }
                         Spacer()
                         Image(systemName: "chevron.right")
-                            .padding(5)
                             .foregroundColor(.secondary)
                     }
                     .cardStyle()
                 }
-                .buttonStyle(.plain)
             }
         }
         // 시트 프리젠테이션
