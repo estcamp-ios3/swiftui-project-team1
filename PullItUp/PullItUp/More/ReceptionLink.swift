@@ -26,7 +26,7 @@ let receptionLinks: [ReceptionLink] = [
 
         ReceptionLink(
             title: "Q-net",
-            description: "국가기술자격: 기술사, 기능장, 기사, 산업기사, 서비스(일부족목) 등 응시자격 확인 및 시험일정, 원서접수를 확인해보세요.",
+            description: "국가기술자격: 기술사, 기능장, 기사, 산업기사 등 응시자격 확인 및 시험일정, 원서접수를 확인해보세요.",
             link: "https://www.q-net.or.kr/man001.do?gSite=Q&gIntro=Y",
             image: "QNetTumb"),
     
