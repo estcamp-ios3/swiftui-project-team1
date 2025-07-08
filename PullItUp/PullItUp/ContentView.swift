@@ -9,6 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
+    // .modelContainer 주입 시, modelContext도 자동 생성됨
+    // context를 통해 insert, delete 등등이 가능함
     @Environment(\.modelContext) private var context
     
     var body: some View {
@@ -32,6 +34,8 @@ struct ContentView: View {
             }
         }
         .task {
+            // ContentView 열릴 때 딱 한번만 호출됨
+            // 파일 체크(존재 유무)를 위해, @Environment를 통해 context를 받아서 파라미터로 전달
             DataLoader.loadJSONAndSave(modelContext: context)
         }
     }
