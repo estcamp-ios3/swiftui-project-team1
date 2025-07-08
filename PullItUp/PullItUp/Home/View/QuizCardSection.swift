@@ -20,6 +20,8 @@ extension View {
 }
 
 struct QuizCardSection: View {
+    @Binding var selectedLicense: String?
+    
     // 10문제 풀기 시트 표시 여부
     @State private var showingTenTestView: Bool = false
     // 모의고사 풀기 시트 표시 여부
@@ -36,7 +38,7 @@ struct QuizCardSection: View {
             HStack {
                 //기출문제 바로가기
                 NavigationLink{
-                    TenTestView()
+                    TenTestView(selectedLicense: .constant(selectedLicense), showingTenTestView: $showingTenTestView)
                 } label:{
                     HStack(alignment:.bottom) {
                         VStack(alignment: .leading, spacing: 4) {
@@ -69,7 +71,7 @@ struct QuizCardSection: View {
                                 .fontWeight(.bold)
                                 .foregroundColor(.primary)
                                 .opacity(0.8)
-                            Text("문제 한번에 풀기")
+                            Text("한번에 풀기")
                                 .font(.body)
                                 .lineLimit(1)
                                 .kerning(-0.75)
@@ -87,5 +89,5 @@ struct QuizCardSection: View {
 }
 
 #Preview {
-    QuizCardSection()
+    QuizCardSection(selectedLicense: .constant("운전면허"))
 }

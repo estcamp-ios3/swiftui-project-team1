@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct HomeView: View {
-    // 자격증 선택
+   // 자격증 선택
     @State private var selectedLicense: String? = nil  // nil이면 미선택 상태
     @State private var showSections: Bool = true
+    
     
     var body: some View {
         NavigationStack {
@@ -30,7 +32,7 @@ struct HomeView: View {
                             if showSections {
                                 VStack(spacing: 24) {
                                     
-                                    QuizCardSection() // 문제풀이 버튼 뷰
+                                    QuizCardSection(selectedLicense: $selectedLicense) // 문제풀이 버튼 뷰
                                     
                                     AdBannerSection() // 광고 배너 뷰
                                     

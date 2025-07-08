@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct HomeSubView: View {
     @Binding var selectedLicense: String?
     
-    // 자격증 종류- dummy
-    let licenses = ["정보처리기사", "정보보안기사", "산업안전기사"]
+    // 자격증 종류
+    @Query var quizItems: [QuizItem]
+    var licenses: [String] {
+        Set(quizItems.map{ $0.licenseName}).sorted()
+    }
     
     var body: some View {
         VStack(spacing: 12) {
