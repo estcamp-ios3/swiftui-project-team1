@@ -8,55 +8,85 @@
 import SwiftUI
 
 struct QuizDataView: View {
-    var quiz: QuizList
-    @Binding var selectAnswer: Int?
-    var isSelectionLocked: Bool
+    let quiz: Quiz
+    @Binding var selectedOptionIndex: Int?
+    var disabled: Bool = false
 
-    var answers: [String] {
-        [quiz.qAnswer1, quiz.qAnswer2, quiz.qAnswer3, quiz.qAnswer4]
-    }
+    // 아래 showAnswer 등은 TenTestView에서만 사용합니다.
+    var showAnswer: Bool = false
+    var onCloseAnswer: (() -> Void)? = nil
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            Text(quiz.qNumber)
-                .font(.title2).bold()
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal, 16)
-
-            Text(quiz.qText)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal, 16)
-
-            VStack(spacing: 12) {
-                ForEach(0..<answers.count, id: \.self) { idx in
-                    Button {
-                        if !isSelectionLocked {
-                            selectAnswer = idx
-                        }
-                    } label: {
-                        HStack {
-                            Text("\(idx + 1). \(answers[idx])")
-                                .foregroundColor(.black)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            Image(
-                                systemName: selectAnswer == idx ? "largecircle.fill.circle" : "circle"
-                            )
-                            .foregroundColor(selectAnswer == idx ? .blue : .gray)
-                            Spacer()
-                        }
-                        .padding(13)
-                        .background(Color(red: 0.9, green: 0.9, blue: 0.9))
-                        .cornerRadius(10)
+        VStack(alignment: .leading, spacing: 18) {
+            Text(quiz.question)
+                .font(.title3)
+                .padding(.bottom, 4)
+            ForEach(0..<quiz.options.count, id: \.self) { i in
+                Button(action: {
+                    selectedOptionIndex = i
+                }) {
+                    HStack {
+                        Image(systemName: selectedOptionIndex == i ? "largecircle.fill.circle" : "circle")
+                            .foregroundColor(selectedOptionIndex == i ? .blue : .gray)
+                            .font(.title2)
+                        Text("\(i+1). \(quiz.options[i])")
+                            .foregroundColor(.primary)
                     }
-                    .padding(.horizontal, 16)
+                    .padding(.vertical, 7)
+                    .padding(.horizontal, 14)
+                    .background(selectedOptionIndex == i ? Color.blue.opacity(0.08) : Color(.systemGray6))
+                    .cornerRadius(12)
                 }
+                .disabled(disabled)
+            }
+            // TenTestView에서 showAnswer 지원 시 하단에 정답 안내
+            if showAnswer {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("정답")
+                        .font(.headline)
+                        .foregroundColor(.green)
+                    if let idx = Int(quiz.answer), quiz.options.count >= idx {
+                        Text("\(quiz.answer)번: \(quiz.options[idx-1])")
+                            .font(.body)
+                    }
+                    if let onClose = onCloseAnswer {
+                        Button("정답닫기") {
+                            onClose()
+                        }
+                        .font(.callout).bold()
+                        .foregroundColor(.green)
+                        .padding(.top, 2)
+                    }
+                }
+                .padding()
+                .background(Color(.systemGreen).opacity(0.09))
+                .cornerRadius(14)
+                .padding(.top, 8)
+                .transition(.opacity)
             }
         }
+        .padding(.vertical, 12)
+        .padding(.horizontal, 2)
     }
 }
 
+// MARK: - 프리뷰
 struct QuizDataView_Previews: PreviewProvider {
+    @State static var selectedOptionIndex: Int? = nil
+
     static var previews: some View {
-        QuizDataView(quiz: quizLists[0], selectAnswer: .constant(nil), isSelectionLocked: false)
+        QuizDataView(
+            quiz: Quiz(
+                number: 1,
+                question: "프리뷰: SwiftUI 문제 영역에 Qn/진행 표시 적용하기",
+                options: ["옵션1", "옵션2", "옵션3", "옵션4"],
+                answer: "2",
+                explanation: "여기 해설 내용이 들어갑니다.",
+                subject: "프리뷰"
+            ),
+            selectedOptionIndex: $selectedOptionIndex
+        )
+        .padding()
+        .previewLayout(.sizeThatFits)
     }
 }
