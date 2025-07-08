@@ -20,7 +20,7 @@ struct ContentView: View {
             }
             
             Tab("통계", systemImage: "chart.bar.xaxis") {
-                Text("통계")
+                StatisticsView()
             }
             
             Tab("더보기", systemImage: "ellipsis") {
