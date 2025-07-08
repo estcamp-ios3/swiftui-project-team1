@@ -25,7 +25,7 @@ struct HomeView: View {
                             Image("homeBg")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(height: 150)
+                                .frame(height: 120)
                             
                             if showSections {
                                 VStack(spacing: 24) {

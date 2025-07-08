@@ -21,7 +21,7 @@ struct HomeSubView: View {
                     Spacer()
                     Spacer()
                     Text(license)
-                        .font(.title)
+                        .font(.largeTitle)
                         .fontWeight(.bold)
                         .offset(y: selectedLicense != nil ? 0 : -50)
                       
@@ -29,8 +29,8 @@ struct HomeSubView: View {
                     Spacer()
                     Text("다른 자격증으로 변경하시겠어요?")
                         .foregroundColor(.gray)
-                        .offset(y: selectedLicense != nil ? 0 : -30)
-                    
+                        .offset(y: selectedLicense != nil ? 10 : -30)
+                    Spacer()
                     Picker("자격증", selection: $selectedLicense) {
                         ForEach(licenses, id: \.self) { itemLicense in
                             Text(itemLicense).tag(Optional(itemLicense))
@@ -39,7 +39,7 @@ struct HomeSubView: View {
                     .pickerStyle(.menu)
                     .foregroundColor(.blue)
                 }
-                .frame(height: 120)
+                .frame(height: 150)
                 .clipped()
                 .animation(.easeInOut(duration: 0.2), value: selectedLicense)
                 
