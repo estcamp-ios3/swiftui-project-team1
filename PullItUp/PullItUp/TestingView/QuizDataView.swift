@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct QuizDataView: View {
-    let quiz: QuizList
+    var quiz: QuizList
     @Binding var selectAnswer: Int?
-    let isSelectionLocked: Bool
+    var isSelectionLocked: Bool
 
     var answers: [String] {
         [quiz.qAnswer1, quiz.qAnswer2, quiz.qAnswer3, quiz.qAnswer4]
@@ -19,7 +19,7 @@ struct QuizDataView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             Text(quiz.qNumber)
-                .font(.title).bold()
+                .font(.title2).bold()
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 16)
 
@@ -38,8 +38,10 @@ struct QuizDataView: View {
                             Text("\(idx + 1). \(answers[idx])")
                                 .foregroundColor(.black)
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                            Image(systemName: selectAnswer == idx ? "largecircle.fill.circle" : "circle")
-                                .foregroundColor(selectAnswer == idx ? .blue : .gray)
+                            Image(
+                                systemName: selectAnswer == idx ? "largecircle.fill.circle" : "circle"
+                            )
+                            .foregroundColor(selectAnswer == idx ? .blue : .gray)
                             Spacer()
                         }
                         .padding(13)
@@ -47,13 +49,14 @@ struct QuizDataView: View {
                         .cornerRadius(10)
                     }
                     .padding(.horizontal, 16)
-                    .disabled(isSelectionLocked)
                 }
             }
         }
     }
 }
 
-#Preview {
-    QuizDataView(quiz: quizLists[0], selectAnswer: .constant(nil), isSelectionLocked: false)
+struct QuizDataView_Previews: PreviewProvider {
+    static var previews: some View {
+        QuizDataView(quiz: quizLists[0], selectAnswer: .constant(nil), isSelectionLocked: false)
+    }
 }
