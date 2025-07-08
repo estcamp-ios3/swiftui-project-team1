@@ -9,8 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+    @Environment(\.modelContext) private var context
     
     var body: some View {
         TabView {
@@ -27,27 +26,17 @@ struct ContentView: View {
                     Seemore()
                 }
             }
-        }
-    }
-    
-    
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-    
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
+            
+            Tab("테스트", systemImage: "chart.bar.xaxis") {
+                TestView()
             }
+        }
+        .task {
+            DataLoader.loadJSONAndSave(modelContext: context)
         }
     }
 }
 
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
 }
