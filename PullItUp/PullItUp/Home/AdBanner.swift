@@ -51,7 +51,6 @@ class AdBannerViewModel {
     private func adRefreshTimer() {
         timer = Timer.scheduledTimer(withTimeInterval: 30.0, repeats: true) { [weak self] _ in
             self?.loadRandomAd()
-            print("광고 갱신! 현재 광고: \(self?.currentAd?.imageName ?? "없음")")
         }
     }
     
@@ -63,7 +62,6 @@ class AdBannerViewModel {
     // 광고 클릭 시 호출될 메서드
     func adTapped() {
         showingSafariView = true
-        print("광고 클릭됨: \(currentAd?.imageName ?? "알 수 없음")")
     }
     
     // SafariView가 닫힐 때 광고 갱신

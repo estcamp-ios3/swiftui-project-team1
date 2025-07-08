@@ -6,14 +6,26 @@
 //
 
 import SwiftUI
+import SwiftData
+
+// 앱 전체의 내비게이션 목적지를 정의
+enum AppNavigationPath: Hashable {
+    // TenTestView로 이동할 때
+    case tenTest
+    // MockTestView로 이동할 때
+    case mockTest
+}
 
 struct HomeView: View {
     // 자격증 선택
     @State private var selectedLicense: String? = nil  // nil이면 미선택 상태
     @State private var showSections: Bool = true
     
+    // NavigationStack의 경로 관리할 상태 변수
+    @State private var path = NavigationPath()
+    
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 0) {
                     ZStack(alignment: .bottom) {
@@ -25,12 +37,12 @@ struct HomeView: View {
                             Image("homeBg")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(height: 150)
+                                .frame(height: 120)
                             
                             if showSections {
                                 VStack(spacing: 24) {
                                     
-                                    QuizCardSection() // 문제풀이 버튼 뷰
+                                    QuizCardSection(selectedLicense: $selectedLicense) // 문제풀이 버튼 뷰
                                     
                                     AdBannerSection() // 광고 배너 뷰
                                     
@@ -58,7 +70,17 @@ struct HomeView: View {
                 }
             }
             //scrollView
+            // path의 값에 따라 뷰를 매핑
+            .navigationDestination(for: AppNavigationPath.self) { destinationPath in
+                switch destinationPath {
+                case .tenTest:
+                    TenTestView(selectedLicense: $selectedLicense)
+                case .mockTest:
+                    MockTestView(selectedLicense: $selectedLicense)
+                }
+            }
         }
+       
     }
 }
 
