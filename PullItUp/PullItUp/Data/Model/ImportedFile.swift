@@ -13,6 +13,9 @@ class ImportedFile: Identifiable {
     var id: UUID = UUID()
     var fileName: String    // JSON 파일 이름
 
+    @Relationship(deleteRule: .cascade)
+    var quizItems: [QuizItem] = []
+
     init(fileName: String) {
         self.fileName = fileName
     }
