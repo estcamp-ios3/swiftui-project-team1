@@ -72,12 +72,12 @@ struct HomeView: View {
             //scrollView
             // path의 값에 따라 뷰를 매핑
             .navigationDestination(for: AppNavigationPath.self) { destinationPath in
-                switch destinationPath {
-                case .tenTest:
-                    TenTestView(selectedLicense: $selectedLicense)
-                case .mockTest:
-                    MockTestView(selectedLicense: $selectedLicense)
-                }
+//                switch destinationPath {
+//                case .tenTest:
+//                    TenTestView(selectedLicense: $selectedLicense)
+//                case .mockTest:
+//                    MockTestView(selectedLicense: $selectedLicense)
+//                }
             }
         }
        
