@@ -107,7 +107,8 @@ struct StatisticsView: View {
                         
                         Picker("자격증 선택", selection: $selectedLicense) {
                             ForEach(licenseNames, id: \.self) { license in
-                                Text(license).tag(license)
+                                Text(license)
+                                    .tag(license)
                             }
                         }
                         .pickerStyle(.menu)
@@ -122,7 +123,9 @@ struct StatisticsView: View {
                     }
                 }
 
-                if !filteredSessions.isEmpty {
+                if !filteredSessions.isEmpty,
+                   let selected = selectedSession,
+                   filteredSessions.contains(where: { $0.id == selected.id }) {
                     GridRow {
                         Text("날짜 선택")
                             .font(.headline)
@@ -150,10 +153,8 @@ struct StatisticsView: View {
             // 최초 자격증 선택값 지정
             if let firstLicense = allSessions.first?.licenseName {
                 selectedLicense = firstLicense
+                updateLatestSession(for: firstLicense)
             }
-            
-            // 해당 라이센스에 맞는 세션 중 가장 최근꺼 자동 선택
-            updateLatestSession(for: selectedLicense)
         }
     }
     
