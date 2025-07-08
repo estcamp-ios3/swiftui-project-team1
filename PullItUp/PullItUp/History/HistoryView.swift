@@ -5,9 +5,9 @@
 //  Created by suji chae on 7/7/25.
 //
 
-import SwiftUI
-import SwiftData
-
+//import SwiftUI
+//import SwiftData
+//
 //struct HistoryView: View {
 //    @guery private var sessions:[QuerySession]
 //    
