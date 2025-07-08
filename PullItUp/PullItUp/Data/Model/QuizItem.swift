@@ -18,7 +18,9 @@ final class QuizItem {
     var explanation: String     // 해설
     var subject: String         // 과목 분류
     var imageName: String?      // 문제 본문에 들어갈 이미지 이름
-    
+
+    @Relationship var importedFile: ImportedFile?
+
     init(licenseName: String = "", number: Int, question: String, options: [String], answer: String, explanation: String, subject: String, imageName: String?) {
         self.licenseName = licenseName
         self.number = number

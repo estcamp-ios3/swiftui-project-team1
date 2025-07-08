@@ -11,14 +11,12 @@ import SwiftData
 
 class DataLoader {
     static func loadJSONAndSave(modelContext: ModelContext) {
-        // 번들에서 모든 JSON 파일 경로 가져오기
         let jsonPaths = Bundle.main.paths(forResourcesOfType: "json", inDirectory: nil)
 
         for path in jsonPaths {
             let url = URL(fileURLWithPath: path)
             let fileName = url.lastPathComponent
 
-            // 이미 저장된 파일이면 넘어간다
             let isAlreadySaved = (try? modelContext.fetch(
                 FetchDescriptor<ImportedFile>(predicate: #Predicate { $0.fileName == fileName })
             ))?.isEmpty == false
@@ -29,7 +27,6 @@ class DataLoader {
                 continue
             }
 
-            // JSON 파일 디코딩
             guard let data = try? Data(contentsOf: url),
                   let decoded = try? JSONDecoder().decode([QuizItemDTO].self, from: data) else {
                 print("❌ \(fileName) 디코딩 실패")
@@ -37,7 +34,11 @@ class DataLoader {
                 continue
             }
 
-            // SwiftData에 저장
+            // 🔥 파일 로그 객체 먼저 생성
+            let importedFile = ImportedFile(fileName: fileName)
+            modelContext.insert(importedFile)
+
+            // 🔥 문제 저장 + 연결
             for item in decoded {
                 let quiz = QuizItem(
                     licenseName: item.licenseName,
@@ -49,13 +50,10 @@ class DataLoader {
                     subject: item.subject,
                     imageName: item.imageName
                 )
-                
+
+                quiz.importedFile = importedFile
                 modelContext.insert(quiz)
             }
-
-            // 처리한 파일 기록 추가 (이미 처리한 파일을 또 처리하지 않기 위함)
-            let fileLog = ImportedFile(fileName: fileName)
-            modelContext.insert(fileLog)
 
             print("✅ \(fileName) → \(decoded.count)개 저장 완료")
         }
