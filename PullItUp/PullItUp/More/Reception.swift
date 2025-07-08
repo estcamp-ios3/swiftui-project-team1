@@ -15,20 +15,23 @@ struct Reception: View {
                     HStack(alignment: .top, spacing: 12){
                         Image(item.image)
                             .resizable()
-                            .frame(width: 50, height: 50)
-                            .cornerRadius(10)
+                            .frame(width: 60, height: 60)
+
                         
                         VStack(alignment: .leading, spacing: 5){
                             Text(item.title)
+                                .foregroundColor(.primary)
                                 .font(.headline)
+                        
                             Text(item.description)
                                 .font(.caption)
                                 .foregroundColor(.secondary)
-                                .lineLimit(2)
+
                         }
                         Spacer()
                         
                         Image(systemName: "chevron.right")
+                            .foregroundColor(.gray)
                     }
                     .padding(.vertical, 8)
                 }
