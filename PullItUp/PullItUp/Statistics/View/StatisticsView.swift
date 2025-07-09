@@ -13,71 +13,43 @@ import Charts
 struct StatisticsView: View {
     @Environment(\.modelContext) private var context
     
-    //    @State private var allSessions: [QuizSession] = []
-    //    @State private var selectedSession: QuizSession?
-    
     @State private var allSessions: [QuizSession] = []
     @State private var selectedLicense: String = ""
     @State private var selectedSession: QuizSession? = nil
     
     var selectedAccuracies: [SubjectAccuracy] {
+        // 현재 선택된 퀴즈 세션의 정답률 정보
         selectedSession?.subjectAccuracies ?? []
     }
     
     var filteredSessions: [QuizSession] {
+        // 전체 퀴즈 세션 중, 피커로 과목이 선택된 세션
         allSessions.filter { $0.licenseName == selectedLicense }
     }
     
     var licenseNames: [String] {
+        // 전체 퀴즈 세션 중, 자격증 이름 중복 제거
         Set(allSessions.map { $0.licenseName }).sorted()
     }
     
     
     var body: some View {
         VStack(spacing: 16) {
-            //            if selectedAccuracies.isEmpty {
-            //                Spacer()
-            //
-            //                Text("최근 퀴즈 결과가 없습니다.")
-            //                    .font(.headline)
-            //                    .foregroundColor(.gray)
-            //            } else {
-            //                Text("정답률 통계")
-            //                    .font(.title)
-            //                    .fontWeight(.bold)
-            //                    .padding(.bottom, 20)
-            //
-            //                RadarChart(
-            //                    data: selectedAccuracies.map { $0.accuracy },
-            //                    labels: selectedAccuracies.map { $0.subject },
-            //                    maxValues: Array(repeating: 1.0, count: selectedAccuracies.count),
-            //                    shapeColor: .orange,
-            //                    radius: 100
-            //                )
-            //                .padding(.bottom, 8)
-            //
-            //                // 정답률 % 표시
-            //                ForEach(selectedAccuracies) { item in
-            //                    HStack {
-            //                        Text(item.subject)
-            //                        Spacer()
-            //                        Text("\(Int(item.accuracy * 100))%")
-            //                    }
-            //                    .padding(.horizontal)
-            //                }
-            //            }
-            
             if selectedAccuracies.isEmpty {
+                // 불러온 퀴즈 세션의 정답률 정보(퀴즈 세션 자체가) 비어 있다면
                 Spacer()
+                
                 Text("최근 퀴즈 결과가 없습니다.")
                     .font(.headline)
                     .foregroundColor(.gray)
             } else {
+                // 뷰 타이틀 설정
                 Text("과목 별 정답률 통계")
                     .font(.title)
                     .fontWeight(.bold)
                     .padding(.bottom, 50)
                 
+                // 방사형 차트 그리기
                 RadarChart(
                     data: selectedAccuracies.map { $0.accuracy },
                     labels: selectedAccuracies.map { $0.subject },
@@ -87,7 +59,7 @@ struct StatisticsView: View {
                 )
                 .padding(.bottom, 20)
                 
-                // 정답률 % 표시
+                // 과목 별 정답률 표시
                 ForEach(selectedAccuracies) { item in
                     HStack {
                         Text(item.subject)
@@ -118,6 +90,7 @@ struct StatisticsView: View {
                                 .filter { $0.licenseName == selectedLicense }
                                 .sorted(by: { $0.startedAt > $1.startedAt })
                                 .first
+                            
                             selectedSession = latest
                         }
                     }
@@ -147,10 +120,10 @@ struct StatisticsView: View {
         .padding()
         .navigationTitle("과목별 정답률")
         .onAppear {
-            //            loadAllSessions()
+            // loadAllSessions() // 더미 데이터 미사용 시, 해당 라인 주석 해제
             allSessions = dummySessions
             
-            // 최초 자격증 선택값 지정
+            // 최초 노출 자격증 값 지정
             if let firstLicense = allSessions.first?.licenseName {
                 selectedLicense = firstLicense
                 updateLatestSession(for: firstLicense)
@@ -160,6 +133,7 @@ struct StatisticsView: View {
     
     
     func updateLatestSession(for license: String) {
+        // 제일 최근 날짜로 설정
         let filtered = allSessions
             .filter { $0.licenseName == license }
             .sorted { $0.startedAt > $1.startedAt }
@@ -168,6 +142,7 @@ struct StatisticsView: View {
     }
     
     func loadAllSessions() {
+        // 퀴즈 세션 값 불러오기
         let descriptor = FetchDescriptor<QuizSession>(
             predicate: #Predicate { $0.endedAt != nil },
             sortBy: [SortDescriptor(\.endedAt, order: .reverse)]
@@ -182,6 +157,7 @@ struct StatisticsView: View {
     }
     
     func formattedDate(_ date: Date) -> String {
+        // 날짜 형식 포멧 셋팅
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")
         formatter.dateFormat = "yyyy.MM.dd (E)"
