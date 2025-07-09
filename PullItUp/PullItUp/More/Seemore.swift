@@ -18,8 +18,12 @@ struct Seemore: View {
                         Spacer() // 텍스트를 왼쪽에 정렬하고 오른쪽에 화살표를 붙임
                     }
                     .font(.headline)
-                    .padding(.vertical, 2)
+                    .padding(.vertical, )
+                    .contentShape(Rectangle())
+
                 }
+                
+                
                 .listRowSeparator(.hidden) // 기본 구분선 숨기기
 
                 Divider() // 항목 사이에 구분선 추가
@@ -31,7 +35,7 @@ struct Seemore: View {
                         Spacer()
                     }
                     .font(.headline)
-                    .padding(.vertical, 2)
+                    .padding(.vertical, 10)
                 }
                 .listRowSeparator(.hidden) // 기본 구분선 숨기기
             }

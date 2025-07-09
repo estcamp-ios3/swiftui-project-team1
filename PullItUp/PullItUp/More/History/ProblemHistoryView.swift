@@ -28,17 +28,24 @@ struct ProblemHistoryView: View {
                         // 각 날짜 내에서는 회차(sessionNumber) 순으로 정렬
                         ForEach(groupedSessions[date]!.sorted(by: { $0.sessionNumber < $1.sessionNumber })) { session in
                             HStack {
-                                VStack(alignment: .leading) {
+                                HStack() {
                                     Text("\(session.sessionNumber)회차")
                                         .font(.headline)
-                                    Text(session.isCompleted ? "완료" : "미완료")
-                                        .font(.subheadline)
-                                        .foregroundColor(session.isCompleted ? .green : .red)
+                                    
+                                    Text("\(session.scoreNumerator)") // "05" 부분
+                                                                        .font(.callout)
+                                                                        .fontWeight(.bold) // bold
+                                                                        .foregroundColor(.black) // 검은색 명시
+                                                                    + Text("/\(session.scoreDenominator)") // "/10" 부분
+                                        .font(.callout) // title2 사이즈는 유지
+                                                                        .fontWeight(.regular) // bold 아님 (regular)
+                                                                        .foregroundColor(.gray) // 회색
+                                    
                                 }
                                 Spacer()
-                                Text("\(session.scoreNumerator)/\(session.scoreDenominator)")
-                                    .font(.title2)
-                                    .fontWeight(.bold)
+                                Text(session.isCompleted ? "완료" : "미완료")
+                                    .font(.subheadline)
+                                    .foregroundColor(session.isCompleted ? .green : .red)
                             }
                         }
                     }
