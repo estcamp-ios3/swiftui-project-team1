@@ -17,12 +17,26 @@ enum AppNavigationPath: Hashable {
 }
 
 struct HomeView: View {
+    @Query(sort: [SortDescriptor(\ImportedFile.fileName, order: .forward)])
+    var importedFiles: [ImportedFile]
+    
+    // ✨ importedFiles에서 licenseName을 추출하고, 중복을 제거한 후 정렬된 리스트를 반환
+    var licenseNames: [String] {
+        let extractedNames = importedFiles.compactMap { file in
+            file.quizItems.first?.licenseName
+        }
+        
+        // Set을 사용하여 중복을 제거하고, 다시 Array로 변환 후 정렬합니다.
+        return Array(Set(extractedNames)).sorted()
+    }
+    
     // 자격증 선택
     @State private var selectedLicense: String? = nil  // nil이면 미선택 상태
     @State private var showSections: Bool = true
     
     // NavigationStack의 경로 관리할 상태 변수
     @State private var path = NavigationPath()
+    
     
     var body: some View {
         NavigationStack(path: $path) {
@@ -32,7 +46,10 @@ struct HomeView: View {
                         VStack(spacing: 0) {
                             
                             // 자격증 선택 뷰
-                            HomeSubView(selectedLicense: $selectedLicense)
+                            HomeSubView(
+                                selectedLicense: $selectedLicense,
+                                licenses: licenseNames
+                            )
                             
                             Image("homeBg")
                                 .resizable()
@@ -48,7 +65,7 @@ struct HomeView: View {
                                     
                                     LicenseInfoSection() // 원서접수안내 뷰
                                     
-                                   // HistorySection() // 이력관리 뷰
+                                    // HistorySection() // 이력관리 뷰
                                     
                                     
                                 }
@@ -71,18 +88,20 @@ struct HomeView: View {
                     showSections = (selectedLicense != nil)
                 }
             }
+            
             //scrollView
             // path의 값에 따라 뷰를 매핑
             .navigationDestination(for: AppNavigationPath.self) { destinationPath in
-//                switch destinationPath {
-//                case .tenTest:
-//                    TenTestView(selectedLicense: $selectedLicense)
-//                case .mockTest:
-//                    MockTestView(selectedLicense: $selectedLicense)
-//                }
+                switch destinationPath {
+                case .tenTest:
+                     TenTestView(selectedLicense: $selectedLicense)
+                case .mockTest:
+//                        MockTestView(selectedLicense: $selectedLicense)
+                        MockExamQuestionsView(selectedLicense: $selectedLicense)
+                }
             }
         }
-       
+        
     }
 }
 

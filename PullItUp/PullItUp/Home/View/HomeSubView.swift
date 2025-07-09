@@ -11,11 +11,7 @@ import SwiftData
 struct HomeSubView: View {
     @Binding var selectedLicense: String?
     
-    // 자격증 종류
-    @Query var quizItems: [QuizItem]
-    var licenses: [String] {
-        Set(quizItems.map{ $0.licenseName}).sorted()
-    }
+    var licenses: [String]
     
     var body: some View {
         VStack(spacing: 12) {
@@ -28,7 +24,7 @@ struct HomeSubView: View {
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .offset(y: selectedLicense != nil ? 0 : -50)
-                      
+                    
                     Spacer()
                     Spacer()
                     Text("다른 자격증으로 변경하시겠어요?")
@@ -77,11 +73,11 @@ struct HomeSubView: View {
                 .clipped()
                 .animation(.easeInOut(duration: 0.2), value: selectedLicense)
             }
-            
         }
-        .layoutPriority(1)    }
+        .layoutPriority(1)
+    }
+        
 }
-
 #Preview {
-    HomeSubView(selectedLicense: .constant(nil))
+//    HomeSubView(selectedLicense: .constant("정보처리기사"))
 }
