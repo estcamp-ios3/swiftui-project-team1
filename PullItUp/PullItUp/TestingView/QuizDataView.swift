@@ -21,21 +21,21 @@ struct QuizDataView: View {
             Text(quiz.question)
                 .font(.title3)
                 .padding(.bottom, 4)
+            
             ForEach(0..<quiz.options.count, id: \.self) { i in
                 Button(action: {
                     selectedOptionIndex = i
                 }) {
                     HStack {
+                        Text("\(i+1). \(quiz.options[i])")
+                            .foregroundColor(.primary)
+                            .multilineTextAlignment(.leading)
+                        Spacer()
                         Image(systemName: selectedOptionIndex == i ? "largecircle.fill.circle" : "circle")
                             .foregroundColor(selectedOptionIndex == i ? .blue : .gray)
                             .font(.title2)
-                        Text("\(i+1). \(quiz.options[i])")
-                            .foregroundColor(.primary)
                     }
-                    .padding(.vertical, 7)
                     .padding(.horizontal, 14)
-                    .background(selectedOptionIndex == i ? Color.blue.opacity(0.08) : Color(.systemGray6))
-                    .cornerRadius(12)
                 }
                 .disabled(disabled)
             }
@@ -79,7 +79,7 @@ struct QuizDataView_Previews: PreviewProvider {
             quiz: Quiz(
                 number: 1,
                 question: "프리뷰: SwiftUI 문제 영역에 Qn/진행 표시 적용하기",
-                options: ["옵션1", "옵션2", "옵션3", "옵션4"],
+                options: ["옵션1이 장문일때 글자를 정렬하기 위해서 어떻게 해야하나", "옵션2", "옵션3", "옵션4"],
                 answer: "2",
                 explanation: "여기 해설 내용이 들어갑니다.",
                 subject: "프리뷰"

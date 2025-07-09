@@ -33,15 +33,30 @@ struct TenTestView: View {
     var body: some View {
         NavigationView {
             ZStack(alignment: .bottom) {
+                
                 VStack(spacing: 0) {
+                    
+                    HStack {
+                            Spacer()
+                            Button(action: {
+                            }) {
+                                Image(systemName: "xmark.circle.fill")
+                                    .resizable()
+                                    .frame(width: 35, height: 35)
+                                    .foregroundColor(.gray)
+                            }
+                            .padding(.trailing, 13)
+                        }
+                    
                     if !showResult {
                         HStack {
+                            
                             Spacer()
                             Text("경과시간 : \(formattedElapsed)")
                                 .font(.system(size: 20, weight: .bold, design: .monospaced))
                                 .foregroundColor(.primary)
                                 .padding(.vertical, 12)
-                            Spacer()
+                            Spacer().frame(width: 16)
                         }
                     }
 
@@ -129,7 +144,7 @@ struct TenTestView: View {
 
                 // 하단 네비 + 해설/정답 버튼(가운데) (스타일/색상/폰트 모두 "첨부 파일 그대로")
                 if !showResult {
-                    HStack(spacing: 10) {
+                    HStack(spacing: 28) {
                         // 이전 문제 버튼
                         Button(action: {
                             if currentIndex > 0 { currentIndex -= 1 }
@@ -143,7 +158,7 @@ struct TenTestView: View {
 
 
                         // 해설/정답 버튼 가로로 (색상, 폰트, 패딩 모두 첨부파일과 동일!)
-                        HStack(spacing: 10) {
+                        HStack(spacing: 11) {
                             // 해설보기: 피치핑크
                             NavigationLink(
                                 destination: HintView(explanation: quizzes[currentIndex].explanation),
@@ -152,16 +167,15 @@ struct TenTestView: View {
                                 Button(action: { showHint = true }) {
                                     Text("해설보기")
                                         .font(.title3)
-                                        .bold()
                                         .foregroundColor(.white)
-                                        .padding(.horizontal, 20)
-                                        .padding(.vertical, 20)
+                                        .padding(.horizontal, 15)
+                                        .padding(.vertical, 16)
                                         .background(Color(red: 1.0, green: 0.44, blue: 0.35))
                                         .overlay(
-                                            RoundedRectangle(cornerRadius: 20)
+                                            RoundedRectangle(cornerRadius: 15)
                                                 .stroke(Color(red: 0.98, green: 0.52, blue: 0.32), lineWidth: 2)
                                         )
-                                        .cornerRadius(20)
+                                        .cornerRadius(15)
                                 }
                             }
                             // 정답보기: 밝은 블루 + 기능
@@ -171,20 +185,19 @@ struct TenTestView: View {
                                 }) {
                                     Text("정답보기")
                                         .font(.title3)
-                                        .bold()
                                         .foregroundColor(.white)
-                                        .padding(.horizontal, 20)
-                                        .padding(.vertical, 20)
+                                        .padding(.horizontal, 15)
+                                        .padding(.vertical, 16)
                                         .background(
                                             isEnabled
                                             ? Color(red: 0.25, green: 0.59, blue: 0.98) // 진한 블루
                                             : Color(red: 0.51, green: 0.79, blue: 1.0)  // 기존 밝은 블루
                                         )
                                         .overlay(
-                                            RoundedRectangle(cornerRadius: 20)
+                                            RoundedRectangle(cornerRadius: 15)
                                                 .stroke(Color(red: 0.25, green: 0.59, blue: 0.98), lineWidth: 2)
                                         )
-                                        .cornerRadius(20)
+                                        .cornerRadius(15)
                                 }
                                 .disabled(!isEnabled)
                                 .alert(isPresented: $showAnswerPopup) {

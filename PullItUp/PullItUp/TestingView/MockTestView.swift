@@ -37,16 +37,20 @@ struct MockTestView: View {
                 VStack(spacing: 0) {
                     if !showResult {
                         VStack(spacing: 0) {
+                            
                             HStack {
-                                Spacer()
-                                Text("남은시간: \(formattedTime)")
-                                    .font(.system(size: 20, weight: .bold, design: .monospaced))
-                                    .padding(.vertical, 5)
-                                    .padding(.leading, 30)
-                                Spacer()
-                                Text("X버튼")
-                                    .padding(.trailing, 15)
-                            }
+                                    Spacer()
+                                    Button(action: {
+                                    }) {
+                                        Image(systemName: "xmark.circle.fill")
+                                            .resizable()
+                                            .frame(width: 35, height: 35)
+                                            .foregroundColor(.gray)
+                                    }
+                                    .padding(.trailing, 13)
+                                    .padding(.bottom, 10)
+                                }
+                            
                             // 프로그래스바
                             ProgressView(value: progress)
                                 .progressViewStyle(LinearProgressViewStyle(tint: progress < 0.15 ? .red : .blue))
@@ -54,6 +58,14 @@ struct MockTestView: View {
                                 .padding(.horizontal, 16)
                                 .padding(.bottom, 1)
                                 .animation(.easeInOut, value: progress)
+                            
+                            HStack {
+                                Spacer()
+                                Text("남은시간: \(formattedTime)")
+                                    .font(.system(size: 20, weight: .bold, design: .monospaced))
+                                    .padding(.vertical, 5)
+                                Spacer().frame(width: 16)
+                            }
                         }
                     }
 
