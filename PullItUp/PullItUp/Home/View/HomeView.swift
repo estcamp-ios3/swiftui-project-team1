@@ -37,6 +37,8 @@ struct HomeView: View {
                                     LicenseInfoSection() // 원서접수안내 뷰
                                     
                                     HistorySection() // 이력관리 뷰
+                                    
+                                    
                                 }
                                 .transition(.opacity)
                                 .animation(.easeInOut(duration: 0.3), value: showSections)
