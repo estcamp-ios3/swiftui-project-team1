@@ -13,7 +13,7 @@ struct PullItUpApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .modelContainer(for: [QuizItem.self, ImportedFile.self]) // SwiftData 사용을 위해 모델 등록
+                .modelContainer(for: [QuizItem.self, ImportedFile.self, ProblemSession.self]) // SwiftData 사용을 위해 모델 등록
         }
     }
 }
