@@ -8,51 +8,55 @@
 import SwiftUI
 
 struct MockTestView: View {
-    // 선택된 자격증 (부모 뷰로부터 전달받음)
+    // 부모 뷰에서 전달받은 자격증 이름
     @Binding var selectedLicense: String?
     
-    // 뷰 닫기 기능을 위한 환경 변수
+    // 현재 뷰를 닫기 위한 dismiss 환경 변수
     @Environment(\.dismiss) private var dismiss
 
-    // 문제 리스트 (무작위로 60문제 선택)
+    // 문제 리스트를 랜덤으로 60개 선택
     @State private var quizzes: [Quiz] = Array(quizListData.shuffled().prefix(60))
-    
-    // 현재 문제 인덱스
+
+    // 현재 보고 있는 문제 인덱스
     @State private var currentIndex: Int = 0
-    
+
     // 결과 화면 표시 여부
     @State private var showResult: Bool = false
-    
-    // 각 문제별로 선택한 보기 인덱스 저장 (선택 안했으면 nil)
+
+    // 각 문제별로 선택한 보기 인덱스 저장 (선택하지 않으면 nil)
     @State private var selectedOptionIndices: [Int?] = Array(repeating: nil, count: 60)
-    
+
     // 제출 확인 팝업
     @State private var showSubmitAlert: Bool = false
-    
-    // 미응답 문제 안내 메시지
+
+    // 미응답 문항 안내 메시지 관련 상태
     @State private var showIncompleteMessage: Bool = false
     @State private var incompleteNumbers: [Int] = []
-    
-    // 종료 버튼 누를 때 확인 팝업
+
+    // 문제풀이 종료 버튼 눌렀을 때 확인 팝업
     @State private var showExitAlert: Bool = false
-    
-    // 경과 시간 (초 단위)
+
+    // 경과 시간(초)
     @State private var elapsedTime: Int = 0
-    
-    // 타이머 동작 여부
+
+    // 타이머 동작 여부를 제어하는 상태
     @State private var timerActive: Bool = true
-    
-    // 제한 시간 초과 팝업
+
+    // 제한시간 초과 팝업
     @State private var showTimeOverAlert: Bool = false
 
-    // 총 시험 시간: 20분
+    // 총 시험 시간(초) = 20분
     private let totalTime: Int = 20 * 60
 
     // 남은 시간 계산
-    private var remainingTime: Int { max(totalTime - elapsedTime, 0) }
+    private var remainingTime: Int {
+        max(totalTime - elapsedTime, 0)
+    }
 
-    // 진행률 (0~1)
-    private var progress: Double { Double(remainingTime) / Double(totalTime) }
+    // 진행률 계산 (ProgressView에 사용)
+    private var progress: Double {
+        Double(remainingTime) / Double(totalTime)
+    }
 
     // 정답 수 계산
     private var correctCount: Int {
@@ -62,17 +66,17 @@ struct MockTestView: View {
         }.count
     }
 
-    // 오답 문제 번호 계산
+    // 오답 문항 번호 추출
     private var wrongNumbers: [Int] {
         quizzes.enumerated().compactMap { index, quiz in
             guard let selected = selectedOptionIndices[index], quiz.options.indices.contains(selected) else {
-                return index + 1 // 미선택도 오답 처리
+                return index + 1
             }
             return quiz.options[selected] != quiz.answer ? index + 1 : nil
         }
     }
 
-    // 시간 표시 형식 (MM:SS)
+    // 시간 표시를 "MM:SS" 형식으로 반환
     private var formattedTime: String {
         let min = remainingTime / 60
         let sec = remainingTime % 60
@@ -83,12 +87,13 @@ struct MockTestView: View {
         NavigationView {
             ZStack(alignment: .bottom) {
                 VStack(spacing: 0) {
-                    // 타이머 & 종료 버튼
                     if !showResult {
+                        // 상단 타이머 및 종료 버튼 영역
                         VStack(spacing: 0) {
                             HStack {
                                 Spacer()
                                 Button {
+                                    timerActive = false            // 🔴 타이머 일시 정지
                                     showExitAlert = true
                                 } label: {
                                     Image(systemName: "xmark.circle.fill")
@@ -99,12 +104,19 @@ struct MockTestView: View {
                                 .padding(.trailing, 13)
                                 .padding(.bottom, 10)
                                 .alert("문제 풀기를 종료하시겠습니까?", isPresented: $showExitAlert) {
-                                    Button("취소", role: .cancel) {}
-                                    Button("확인", role: .destructive) { dismiss() }
+                                    // ❗️취소: 타이머 재개
+                                    Button("취소", role: .cancel) {
+                                        timerActive = true
+                                        startTimer()
+                                    }
+                                    // ✅ 확인: 종료
+                                    Button("확인", role: .destructive) {
+                                        dismiss()
+                                    }
                                 }
                             }
 
-                            // 타이머 진행 바
+                            // 진행률 표시 바
                             ProgressView(value: progress)
                                 .progressViewStyle(
                                     LinearProgressViewStyle(
@@ -121,10 +133,9 @@ struct MockTestView: View {
                         }
                     }
 
-                    // 문제 영역 or 결과 영역
+                    // 문제풀이 영역 또는 결과 화면
                     Group {
                         if showResult {
-                            // 결과 화면
                             Spacer()
                             VStack(spacing: 24) {
                                 Text("모의고사 결과")
@@ -137,8 +148,6 @@ struct MockTestView: View {
                                         .font(.body)
                                         .foregroundColor(.red)
                                         .multilineTextAlignment(.center)
-                                        .lineLimit(nil)
-                                        .fixedSize(horizontal: false, vertical: true)
                                 }
 
                                 Text("소요시간: \(formattedTime)")
@@ -161,7 +170,6 @@ struct MockTestView: View {
                             }
                             Spacer()
                         } else {
-                            // 문제 푸는 화면
                             ScrollView {
                                 VStack(alignment: .leading, spacing: 24) {
                                     HStack {
@@ -172,7 +180,6 @@ struct MockTestView: View {
                                             .foregroundColor(.secondary)
                                     }
 
-                                    // 현재 문제 및 보기
                                     let quiz = quizzes[currentIndex]
                                     QuizDataView(
                                         quiz: quiz,
@@ -181,7 +188,6 @@ struct MockTestView: View {
                                             set: { selectedOptionIndices[currentIndex] = $0 }
                                         )
                                     )
-
                                     Spacer(minLength: 100)
                                 }
                                 .padding(.horizontal)
@@ -204,7 +210,7 @@ struct MockTestView: View {
                         }
 
                         HStack {
-                            // 이전 문제
+                            // 이전 문제로 이동
                             Button {
                                 if currentIndex > 0 { currentIndex -= 1 }
                             } label: {
@@ -286,12 +292,15 @@ struct MockTestView: View {
 
     // 타이머 시작 함수
     private func startTimer() {
-        timerActive = true
+        // 이미 활성화된 경우 중복 타이머 방지
+        guard timerActive else { return }
+        
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             guard timerActive, !showResult else {
                 timer.invalidate()
                 return
             }
+
             elapsedTime += 1
 
             if elapsedTime >= totalTime {
@@ -302,7 +311,7 @@ struct MockTestView: View {
         }
     }
 
-    // 전체 리셋 (다시 풀기)
+    // 전체 상태 초기화 함수
     private func resetAll() {
         quizzes = Array(quizListData.shuffled().prefix(60))
         currentIndex = 0
