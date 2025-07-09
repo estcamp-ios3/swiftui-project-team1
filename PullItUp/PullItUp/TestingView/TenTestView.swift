@@ -8,37 +8,58 @@
 import SwiftUI
 
 struct TenTestView: View {
+    @Binding var selectedLicense: String?
+
     @State private var quizzes: [Quiz] = Array(quizListData.shuffled().prefix(10))
     @State private var currentIndex: Int = 0
     @State private var showResult: Bool = false
     @State private var selectedOptionIndices: [Int?] = Array(repeating: nil, count: 10)
     @State private var elapsedTime: Int = 0
     @State private var timerActive: Bool = true
-
     @State private var showHint: Bool = false
-
-    // 정답보기 관련 State
     @State private var showAnswerPopup: Bool = false
     @State private var answerRevealed: [Bool] = Array(repeating: false, count: 10)
+    @State private var showIncompleteMessage: Bool = false
+    @State private var incompleteNumbers: [Int] = []
+    @State private var showSubmitAlert: Bool = false
+    @State private var showExitAlert: Bool = false
 
-    private var isAllAnswered: Bool {
-        !selectedOptionIndices.contains(where: { $0 == nil })
-    }
+    @Environment(\.dismiss) private var dismiss
+
     private var formattedElapsed: String {
         let min = elapsedTime / 60
         let sec = elapsedTime % 60
         return String(format: "%02d:%02d", min, sec)
     }
 
+    private var correctCount: Int {
+        quizzes.enumerated().filter { index, quiz in
+            if let selected = selectedOptionIndices[index] {
+                return quiz.options[safe: selected] == quiz.options[safe: Int(quiz.answer) ?? -1]
+            }
+            return false
+        }.count
+    }
+
+    private var wrongNumbers: [Int] {
+        quizzes.enumerated().compactMap { index, quiz in
+            if let selected = selectedOptionIndices[index],
+               quiz.options[safe: selected] != quiz.options[safe: Int(quiz.answer) ?? -1] {
+                return index + 1
+            }
+            return nil
+        }
+    }
+
     var body: some View {
         NavigationView {
             ZStack(alignment: .bottom) {
-                
                 VStack(spacing: 0) {
-                    
                     HStack {
-                            Spacer()
+                        Spacer()
+                        if !showResult {
                             Button(action: {
+                                showExitAlert = true
                             }) {
                                 Image(systemName: "xmark.circle.fill")
                                     .resizable()
@@ -46,11 +67,17 @@ struct TenTestView: View {
                                     .foregroundColor(.gray)
                             }
                             .padding(.trailing, 13)
+                            .alert("문제 풀기를 종료하시겠습니까?", isPresented: $showExitAlert) {
+                                Button("취소", role: .cancel) {}
+                                Button("확인", role: .destructive) {
+                                    dismiss()
+                                }
+                            }
                         }
-                    
+                    }
+
                     if !showResult {
                         HStack {
-                            
                             Spacer()
                             Text("경과시간 : \(formattedElapsed)")
                                 .font(.system(size: 20, weight: .bold, design: .monospaced))
@@ -66,8 +93,16 @@ struct TenTestView: View {
                             VStack(spacing: 24) {
                                 Text("10문제 결과")
                                     .font(.largeTitle).bold()
-                                Text("문제 수: \(quizzes.count)")
+                                Text("정답률: \(correctCount)/\(quizzes.count)  \(Int((Double(correctCount) / Double(quizzes.count)) * 100))%")
                                     .font(.title)
+                                if !wrongNumbers.isEmpty {
+                                    Text("틀린 문제: \(wrongNumbers.map { String($0) }.joined(separator: ", "))")
+                                        .font(.largeTitle)
+                                        .foregroundColor(.red)
+                                        .multilineTextAlignment(.center)
+                                        .lineLimit(nil)
+                                        .fixedSize(horizontal: false, vertical: true)
+                                }
                                 Text("소요시간: \(formattedElapsed)")
                                     .font(.title2)
                                     .foregroundColor(.blue)
@@ -75,8 +110,15 @@ struct TenTestView: View {
                                     resetAll()
                                 }
                                 .padding()
-                                .background(Color.yellow)
-                                .foregroundColor(.black)
+                                .background(Color.blue.opacity(0.2))
+                                .cornerRadius(10)
+
+                                Button("메인으로") {
+                                    dismiss()
+                                }
+                                .padding()
+                                .background(Color.gray.opacity(0.2))
+                                .cornerRadius(10)
                             }
                             Spacer()
                         } else if currentIndex < quizzes.count {
@@ -109,14 +151,13 @@ struct TenTestView: View {
                                         )
                                         .id("quizView")
 
-                                        // 정답 토글 박스 (정답보기 버튼 바로 위)
                                         if answerRevealed[currentIndex] {
                                             VStack {
                                                 Text("정답: \(quiz.options[safe: Int(quiz.answer) ?? -1] ?? quiz.answer)")
                                                     .font(.title2).bold()
                                                     .padding()
                                                     .frame(maxWidth: .infinity)
-                                                    .background(Color(red: 0.51, green: 0.79, blue: 1.0).opacity(0.22)) // 버튼색 참고
+                                                    .background(Color(red: 0.51, green: 0.79, blue: 1.0).opacity(0.22))
                                                     .cornerRadius(14)
                                                     .padding(.bottom, 8)
                                             }
@@ -142,44 +183,50 @@ struct TenTestView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
 
-                // 하단 네비 + 해설/정답 버튼(가운데) (스타일/색상/폰트 모두 "첨부 파일 그대로")
                 if !showResult {
-                    HStack(spacing: 28) {
-                        // 이전 문제 버튼
-                        Button(action: {
-                            if currentIndex > 0 { currentIndex -= 1 }
-                        }) {
-                            Image(systemName: "arrow.left.circle.fill")
-                                .resizable()
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(currentIndex == 0 ? .gray : .blue)
+                    VStack(spacing: 12) {
+                        if showIncompleteMessage {
+                            Text("아직 풀지 않은 문제: \(incompleteNumbers.map { String($0 + 1) }.joined(separator: ", "))")
+                                .font(.footnote)
+                                .padding(10)
+                                .background(Color.gray.opacity(0.8))
+                                .foregroundColor(.white)
+                                .cornerRadius(8)
+                                .transition(.opacity)
                         }
-                        .disabled(currentIndex == 0)
 
-
-                        // 해설/정답 버튼 가로로 (색상, 폰트, 패딩 모두 첨부파일과 동일!)
-                        HStack(spacing: 11) {
-                            // 해설보기: 피치핑크
-                            NavigationLink(
-                                destination: HintView(explanation: quizzes[currentIndex].explanation),
-                                isActive: $showHint
-                            ) {
-                                Button(action: { showHint = true }) {
-                                    Text("해설보기")
-                                        .font(.title3)
-                                        .foregroundColor(.white)
-                                        .padding(.horizontal, 15)
-                                        .padding(.vertical, 16)
-                                        .background(Color(red: 1.0, green: 0.44, blue: 0.35))
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 15)
-                                                .stroke(Color(red: 0.98, green: 0.52, blue: 0.32), lineWidth: 2)
-                                        )
-                                        .cornerRadius(15)
-                                }
+                        HStack(spacing: 28) {
+                            Button(action: {
+                                if currentIndex > 0 { currentIndex -= 1 }
+                            }) {
+                                Image(systemName: "arrow.left.circle.fill")
+                                    .resizable()
+                                    .frame(width: 50, height: 50)
+                                    .foregroundColor(currentIndex == 0 ? .gray : .blue)
                             }
-                            // 정답보기: 밝은 블루 + 기능
-                            let isEnabled = selectedOptionIndices[currentIndex] != nil && !answerRevealed[currentIndex]
+                            .disabled(currentIndex == 0)
+
+                            HStack(spacing: 11) {
+                                NavigationLink(
+                                    destination: HintView(explanation: quizzes[currentIndex].explanation),
+                                    isActive: $showHint
+                                ) {
+                                    Button(action: { showHint = true }) {
+                                        Text("해설보기")
+                                            .font(.title3)
+                                            .foregroundColor(.white)
+                                            .padding(.horizontal, 15)
+                                            .padding(.vertical, 16)
+                                            .background(Color(red: 1.0, green: 0.44, blue: 0.35))
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 15)
+                                                    .stroke(Color(red: 0.98, green: 0.52, blue: 0.32), lineWidth: 2)
+                                            )
+                                            .cornerRadius(15)
+                                    }
+                                }
+
+                                let isEnabled = selectedOptionIndices[currentIndex] != nil && !answerRevealed[currentIndex]
                                 Button(action: {
                                     showAnswerPopup = true
                                 }) {
@@ -189,9 +236,7 @@ struct TenTestView: View {
                                         .padding(.horizontal, 15)
                                         .padding(.vertical, 16)
                                         .background(
-                                            isEnabled
-                                            ? Color(red: 0.25, green: 0.59, blue: 0.98) // 진한 블루
-                                            : Color(red: 0.51, green: 0.79, blue: 1.0)  // 기존 밝은 블루
+                                            isEnabled ? Color(red: 0.25, green: 0.59, blue: 0.98) : Color(red: 0.51, green: 0.79, blue: 1.0)
                                         )
                                         .overlay(
                                             RoundedRectangle(cornerRadius: 15)
@@ -207,33 +252,65 @@ struct TenTestView: View {
                                             answerRevealed[currentIndex] = true
                                         },
                                         secondaryButton: .cancel(Text("안볼래"))
-                                )
+                                    )
+                                }
                             }
-                        }
 
-
-                        // 다음 문제 버튼 (마지막 문제면 비활성)
-                        Button(action: {
                             if currentIndex < quizzes.count - 1 {
-                                currentIndex += 1
+                                Button(action: {
+                                    currentIndex += 1
+                                }) {
+                                    Image(systemName: "arrow.right.circle.fill")
+                                        .resizable()
+                                        .frame(width: 50, height: 50)
+                                        .foregroundColor(.blue)
+                                }
+                            } else {
+                                Button(action: {
+                                    let unanswered = selectedOptionIndices.enumerated().filter { $0.element == nil }.map { $0.offset }
+                                    if unanswered.isEmpty {
+                                        showSubmitAlert = true
+                                    } else {
+                                        incompleteNumbers = unanswered
+                                        withAnimation {
+                                            showIncompleteMessage = true
+                                        }
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                                            withAnimation {
+                                                showIncompleteMessage = false
+                                            }
+                                        }
+                                    }
+                                }) {
+                                    Text("제출")
+                                        .font(.title2.bold())
+                                        .frame(width: 50, height: 50)
+                                        .background(Color.green)
+                                        .foregroundColor(.white)
+                                        .cornerRadius(50)
+                                }
+                                .alert("제출 완료하시겠습니까?", isPresented: $showSubmitAlert) {
+                                    Button("취소", role: .cancel) {}
+                                    Button("제출", role: .destructive) {
+                                        showResult = true
+                                        timerActive = false
+                                    }
+                                }
                             }
-                        }) {
-                            Image(systemName: "arrow.right.circle.fill")
-                                .resizable()
-                                .frame(width: 50, height: 50)
-                                .foregroundColor(currentIndex == quizzes.count - 1 ? .gray : .blue)
                         }
-                        .disabled(currentIndex == quizzes.count - 1)
+                        .padding(.bottom, 18)
+                        .padding(.horizontal, 18)
                     }
-                    .padding(.bottom, 18)
-                    .padding(.horizontal, 18)
                 }
             }
-            .navigationTitle("")
-            .navigationBarHidden(true)
+            .navigationTitle("기출문제 풀기")
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarBackButtonHidden(true)
+            .toolbar(.hidden, for: .tabBar)
             .onAppear { startTimer() }
             .onDisappear { timerActive = false }
         }
+        .navigationBarBackButtonHidden(true)
     }
 
     private func startTimer() {
@@ -259,16 +336,14 @@ struct TenTestView: View {
     }
 }
 
-// MARK: - 옵션 배열 접근 안전하게 (범위 벗어나면 nil)
 extension Collection {
     subscript(safe index: Index) -> Element? {
         indices.contains(index) ? self[index] : nil
     }
 }
 
-// MARK: - 프리뷰
 struct TenTestView_Previews: PreviewProvider {
     static var previews: some View {
-        TenTestView()
+        TenTestView(selectedLicense: .constant("정보처리기사"))
     }
 }
