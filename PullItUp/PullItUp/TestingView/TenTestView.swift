@@ -1,3 +1,10 @@
+//
+//  TenTestView.swift
+//  PullItUp
+//
+//  Created by 이지훈 on 7/7/25.
+//
+
 import SwiftUI
 
 struct TenTestView: View {
@@ -13,7 +20,7 @@ struct TenTestView: View {
     @State private var showIncompleteMessage: Bool = false
     @State private var incompleteNumbers: [Int] = []
     @State private var showSubmitAlert: Bool = false
-    @State private var showExitAlert: Bool = false
+    @State private var showExitAlert: Bool = false  // 🔹 종료 확인용 Alert 상태 변수
 
     @Environment(\.dismiss) private var dismiss
 
@@ -294,12 +301,15 @@ struct TenTestView: View {
                     }
                 }
             }
-            .navigationTitle("")
-            .navigationBarHidden(true)
+            .navigationTitle("기출문제 풀기") // 내비게이션 타이틀 설정
+            .navigationBarTitleDisplayMode(.inline) // 타이틀 표시 방식
+            .navigationBarBackButtonHidden(true) // < Back 버튼 가리기
+            .toolbar(.hidden, for: .tabBar) // 탭바 가리기
             .onAppear { startTimer() }
             .onDisappear { timerActive = false }
             .toolbar(.hidden, for: .tabBar)
         }
+        .navigationBarBackButtonHidden(true)
     }
 
     private func startTimer() {

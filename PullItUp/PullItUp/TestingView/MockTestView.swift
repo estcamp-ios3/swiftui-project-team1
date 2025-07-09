@@ -1,3 +1,10 @@
+//
+//  MockTestView.swift
+//  PullItUp
+//
+//  Created by 이지훈 on 7/7/25.
+//
+
 import SwiftUI
 
 struct MockTestView: View {
@@ -231,12 +238,15 @@ struct MockTestView: View {
                     }
                 }
             }
-            .navigationTitle("")
-            .navigationBarHidden(true)
+            .navigationTitle("모의고사 풀기") // 내비게이션 타이틀 설정
+            .navigationBarTitleDisplayMode(.inline) // 타이틀 표시 방식
+            .navigationBarBackButtonHidden(true) // < Back 버튼 가리기
+            .toolbar(.hidden, for: .tabBar) // 탭바 가리기
             .onAppear { startTimer() }
             .onDisappear { timerActive = false }
             .toolbar(.hidden, for: .tabBar)
         }
+        .navigationBarBackButtonHidden(true)
     }
 
     private func startTimer() {
