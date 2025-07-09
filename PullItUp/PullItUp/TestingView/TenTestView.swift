@@ -1,28 +1,34 @@
 import SwiftUI
 
+// 기출문제를 10개 풀 수 있는 화면
 struct TenTestView: View {
-    @State private var quizzes: [Quiz] = Array(quizListData.shuffled().prefix(10))
-    @State private var currentIndex: Int = 0
-    @State private var showResult: Bool = false
-    @State private var selectedOptionIndices: [Int?] = Array(repeating: nil, count: 10)
-    @State private var elapsedTime: Int = 0
-    @State private var timerActive: Bool = true
-    @State private var showHint: Bool = false
-    @State private var showAnswerPopup: Bool = false
-    @State private var answerRevealed: [Bool] = Array(repeating: false, count: 10)
-    @State private var showIncompleteMessage: Bool = false
-    @State private var incompleteNumbers: [Int] = []
-    @State private var showSubmitAlert: Bool = false
-    @State private var showExitAlert: Bool = false
+    @Binding var selectedLicense: String? // 선택된 자격증 정보 (부모 뷰에서 전달됨)
 
-    @Environment(\.dismiss) private var dismiss
+    // 상태 변수들
+    @State private var quizzes: [Quiz] = Array(quizListData.shuffled().prefix(10)) // 문제 10개 무작위로 선택
+    @State private var currentIndex: Int = 0 // 현재 문제 번호
+    @State private var showResult: Bool = false // 결과 화면 표시 여부
+    @State private var selectedOptionIndices: [Int?] = Array(repeating: nil, count: 10) // 각 문제에 대한 선택 저장
+    @State private var elapsedTime: Int = 0 // 경과 시간 (초)
+    @State private var timerActive: Bool = true // 타이머 작동 여부
+    @State private var showHint: Bool = false // 해설 보기 화면 표시 여부
+    @State private var showAnswerPopup: Bool = false // 정답 확인 알림창 표시 여부
+    @State private var answerRevealed: [Bool] = Array(repeating: false, count: 10) // 정답 공개 여부 저장
+    @State private var showIncompleteMessage: Bool = false // 미응답 문제 안내 메시지 표시 여부
+    @State private var incompleteNumbers: [Int] = [] // 미응답 문제 번호 저장
+    @State private var showSubmitAlert: Bool = false // 제출 확인 알림창
+    @State private var showExitAlert: Bool = false // 종료 확인 알림창
 
+    @Environment(\.dismiss) private var dismiss // 현재 뷰를 닫기 위한 환경 변수
+
+    // 경과 시간을 MM:SS 형식으로 포맷
     private var formattedElapsed: String {
         let min = elapsedTime / 60
         let sec = elapsedTime % 60
         return String(format: "%02d:%02d", min, sec)
     }
 
+    // 정답 개수 계산
     private var correctCount: Int {
         quizzes.enumerated().filter { index, quiz in
             if let selected = selectedOptionIndices[index] {
@@ -32,6 +38,7 @@ struct TenTestView: View {
         }.count
     }
 
+    // 오답 문제 번호 계산
     private var wrongNumbers: [Int] {
         quizzes.enumerated().compactMap { index, quiz in
             if let selected = selectedOptionIndices[index],
@@ -46,12 +53,14 @@ struct TenTestView: View {
         NavigationView {
             ZStack(alignment: .bottom) {
                 VStack(spacing: 0) {
+                    // 상단 종료 버튼
                     HStack {
                         Spacer()
                         if !showResult {
-                            Button(action: {
+                            Button {
+                                timerActive = false // 타이머 일시정지
                                 showExitAlert = true
-                            }) {
+                            } label: {
                                 Image(systemName: "xmark.circle.fill")
                                     .resizable()
                                     .frame(width: 35, height: 35)
@@ -59,14 +68,16 @@ struct TenTestView: View {
                             }
                             .padding(.trailing, 13)
                             .alert("문제 풀기를 종료하시겠습니까?", isPresented: $showExitAlert) {
-                                Button("취소", role: .cancel) {}
-                                Button("확인", role: .destructive) {
-                                    dismiss()
+                                Button("취소", role: .cancel) {
+                                    timerActive = true // 취소 시 타이머 재시작
+                                    startTimer()
                                 }
+                                Button("확인", role: .destructive) { dismiss() }
                             }
                         }
                     }
 
+                    // 경과 시간 표시
                     if !showResult {
                         HStack {
                             Spacer()
@@ -80,53 +91,41 @@ struct TenTestView: View {
 
                     Group {
                         if showResult {
+                            // 결과 화면
                             Spacer()
                             VStack(spacing: 24) {
-                                Text("10문제 결과")
-                                    .font(.largeTitle).bold()
-                                Text("정답률: \(correctCount)/\(quizzes.count)  \(Int((Double(correctCount) / Double(quizzes.count)) * 100))%")
+                                Text("10문제 결과").font(.largeTitle).bold()
+                                Text("정답률: \(correctCount)/\(quizzes.count)  \(Int(Double(correctCount) / Double(quizzes.count) * 100))%")
                                     .font(.title)
                                 if !wrongNumbers.isEmpty {
                                     Text("틀린 문제: \(wrongNumbers.map { String($0) }.joined(separator: ", "))")
-                                        .font(.largeTitle)
                                         .foregroundColor(.red)
-                                        .multilineTextAlignment(.center)
-                                        .lineLimit(nil)
-                                        .fixedSize(horizontal: false, vertical: true)
                                 }
-                                Text("소요시간: \(formattedElapsed)")
-                                    .font(.title2)
-                                    .foregroundColor(.blue)
+                                Text("소요시간: \(formattedElapsed)").foregroundColor(.blue)
+
+                                // 다시 풀기 버튼
                                 Button("다시 풀기") {
                                     resetAll()
                                 }
-                                .padding()
-                                .background(Color.blue.opacity(0.2))
-                                .cornerRadius(10)
+                                .padding().background(Color.blue.opacity(0.2)).cornerRadius(10)
 
+                                // 메인으로 이동
                                 Button("메인으로") {
                                     dismiss()
                                 }
-                                .padding()
-                                .background(Color.gray.opacity(0.2))
-                                .cornerRadius(10)
+                                .padding().background(Color.gray.opacity(0.2)).cornerRadius(10)
                             }
                             Spacer()
-                        } else if currentIndex < quizzes.count {
+                        } else {
+                            // 문제 푸는 화면
                             ScrollViewReader { proxy in
                                 ScrollView {
                                     VStack(alignment: .leading, spacing: 24) {
                                         HStack {
-                                            Text("Q\(currentIndex+1)")
-                                                .font(.system(size: 24, weight: .bold))
-                                                .foregroundColor(.primary)
+                                            Text("Q\(currentIndex+1)").font(.system(size: 24, weight: .bold))
                                             Spacer()
-                                            Text("\(currentIndex+1)/\(quizzes.count)")
-                                                .font(.system(size: 17, weight: .bold))
-                                                .foregroundColor(.secondary)
+                                            Text("\(currentIndex+1)/\(quizzes.count)").foregroundColor(.secondary)
                                         }
-                                        .padding(.top, 8)
-                                        .padding(.bottom, 2)
 
                                         let quiz = quizzes[currentIndex]
                                         QuizDataView(
@@ -142,15 +141,14 @@ struct TenTestView: View {
                                         )
                                         .id("quizView")
 
+                                        // 정답 공개 영역
                                         if answerRevealed[currentIndex] {
                                             VStack {
                                                 Text("정답: \(quiz.options[safe: Int(quiz.answer) ?? -1] ?? quiz.answer)")
-                                                    .font(.title2).bold()
+                                                    .bold()
                                                     .padding()
-                                                    .frame(maxWidth: .infinity)
-                                                    .background(Color(red: 0.51, green: 0.79, blue: 1.0).opacity(0.22))
+                                                    .background(Color.blue.opacity(0.2))
                                                     .cornerRadius(14)
-                                                    .padding(.bottom, 8)
                                             }
                                             .id("answer")
                                             .transition(.opacity)
@@ -159,7 +157,6 @@ struct TenTestView: View {
                                         Spacer(minLength: 100)
                                     }
                                     .padding(.horizontal, 20)
-                                    .padding(.vertical, 10)
                                 }
                                 .onChange(of: answerRevealed[currentIndex]) { show in
                                     if show {
@@ -171,9 +168,9 @@ struct TenTestView: View {
                             }
                         }
                     }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
 
+                // 하단 버튼 영역
                 if !showResult {
                     VStack(spacing: 12) {
                         if showIncompleteMessage {
@@ -183,13 +180,13 @@ struct TenTestView: View {
                                 .background(Color.gray.opacity(0.8))
                                 .foregroundColor(.white)
                                 .cornerRadius(8)
-                                .transition(.opacity)
                         }
 
                         HStack(spacing: 28) {
-                            Button(action: {
+                            // 이전 버튼
+                            Button {
                                 if currentIndex > 0 { currentIndex -= 1 }
-                            }) {
+                            } label: {
                                 Image(systemName: "arrow.left.circle.fill")
                                     .resizable()
                                     .frame(width: 50, height: 50)
@@ -197,68 +194,62 @@ struct TenTestView: View {
                             }
                             .disabled(currentIndex == 0)
 
+                            // 해설 및 정답 보기 버튼들
                             HStack(spacing: 11) {
                                 NavigationLink(
                                     destination: HintView(explanation: quizzes[currentIndex].explanation),
                                     isActive: $showHint
                                 ) {
-                                    Button(action: { showHint = true }) {
-                                        Text("해설보기")
-                                            .font(.title3)
-                                            .foregroundColor(.white)
-                                            .padding(.horizontal, 15)
-                                            .padding(.vertical, 16)
-                                            .background(Color(red: 1.0, green: 0.44, blue: 0.35))
-                                            .overlay(
-                                                RoundedRectangle(cornerRadius: 15)
-                                                    .stroke(Color(red: 0.98, green: 0.52, blue: 0.32), lineWidth: 2)
-                                            )
-                                            .cornerRadius(15)
+                                    Button("해설보기") {
+                                        showHint = true
                                     }
+                                    .font(.title3)
+                                    .foregroundColor(.white)
+                                    .padding(.horizontal, 15)
+                                    .padding(.vertical, 16)
+                                    .background(Color.red)
+                                    .cornerRadius(15)
                                 }
 
                                 let isEnabled = selectedOptionIndices[currentIndex] != nil && !answerRevealed[currentIndex]
-                                Button(action: {
+                                Button("정답보기") {
                                     showAnswerPopup = true
-                                }) {
-                                    Text("정답보기")
-                                        .font(.title3)
-                                        .foregroundColor(.white)
-                                        .padding(.horizontal, 15)
-                                        .padding(.vertical, 16)
-                                        .background(
-                                            isEnabled ? Color(red: 0.25, green: 0.59, blue: 0.98) : Color(red: 0.51, green: 0.79, blue: 1.0)
-                                        )
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 15)
-                                                .stroke(Color(red: 0.25, green: 0.59, blue: 0.98), lineWidth: 2)
-                                        )
-                                        .cornerRadius(15)
                                 }
                                 .disabled(!isEnabled)
+                                .font(.title3)
+                                .foregroundColor(.white)
+                                .padding(.horizontal, 15)
+                                .padding(.vertical, 16)
+                                .background(isEnabled ? Color.blue : Color.blue.opacity(0.5))
+                                .cornerRadius(15)
                                 .alert(isPresented: $showAnswerPopup) {
                                     Alert(
-                                        title: Text("정답을 확인하시면 선택한 답을 변경하실 수 없습니다"),
-                                        primaryButton: .destructive(Text("그래도 볼꺼야")) {
+                                        title: Text("정답을 확인하시면 선택한 답을 변경할 수 없습니다"),
+                                        primaryButton: .destructive(Text("그래도 볼래")) {
                                             answerRevealed[currentIndex] = true
                                         },
-                                        secondaryButton: .cancel(Text("안볼래"))
+                                        secondaryButton: .cancel(Text("취소"))
                                     )
                                 }
                             }
 
+                            // 다음 문제 or 제출
                             if currentIndex < quizzes.count - 1 {
-                                Button(action: {
+                                Button {
                                     currentIndex += 1
-                                }) {
+                                } label: {
                                     Image(systemName: "arrow.right.circle.fill")
                                         .resizable()
                                         .frame(width: 50, height: 50)
                                         .foregroundColor(.blue)
                                 }
                             } else {
-                                Button(action: {
-                                    let unanswered = selectedOptionIndices.enumerated().filter { $0.element == nil }.map { $0.offset }
+                                Button {
+                                    timerActive = false
+                                    let unanswered = selectedOptionIndices.enumerated()
+                                        .filter { $0.element == nil }
+                                        .map { $0.offset }
+
                                     if unanswered.isEmpty {
                                         showSubmitAlert = true
                                     } else {
@@ -271,8 +262,10 @@ struct TenTestView: View {
                                                 showIncompleteMessage = false
                                             }
                                         }
+                                        timerActive = true
+                                        startTimer()
                                     }
-                                }) {
+                                } label: {
                                     Text("제출")
                                         .font(.title2.bold())
                                         .frame(width: 50, height: 50)
@@ -281,7 +274,10 @@ struct TenTestView: View {
                                         .cornerRadius(50)
                                 }
                                 .alert("제출 완료하시겠습니까?", isPresented: $showSubmitAlert) {
-                                    Button("취소", role: .cancel) {}
+                                    Button("취소", role: .cancel) {
+                                        timerActive = true
+                                        startTimer()
+                                    }
                                     Button("제출", role: .destructive) {
                                         showResult = true
                                         timerActive = false
@@ -294,16 +290,18 @@ struct TenTestView: View {
                     }
                 }
             }
-            .navigationTitle("")
-            .navigationBarHidden(true)
+            .navigationTitle("기출문제 풀기")
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarBackButtonHidden(true)
+            .toolbar(.hidden, for: .tabBar)
             .onAppear { startTimer() }
             .onDisappear { timerActive = false }
-            .toolbar(.hidden, for: .tabBar)
         }
     }
 
+    // 타이머 시작 함수
     private func startTimer() {
-        timerActive = true
+        guard timerActive else { return }
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
             if !timerActive || showResult {
                 timer.invalidate()
@@ -313,6 +311,7 @@ struct TenTestView: View {
         }
     }
 
+    // 전체 리셋
     private func resetAll() {
         quizzes = Array(quizListData.shuffled().prefix(10))
         currentIndex = 0
@@ -325,14 +324,16 @@ struct TenTestView: View {
     }
 }
 
+// 배열 접근 시 안전하게 접근하는 확장
 extension Collection {
     subscript(safe index: Index) -> Element? {
         indices.contains(index) ? self[index] : nil
     }
 }
 
+// 미리보기용 프리뷰
 struct TenTestView_Previews: PreviewProvider {
     static var previews: some View {
-        TenTestView()
+        TenTestView(selectedLicense: .constant("정보처리기사"))
     }
 }

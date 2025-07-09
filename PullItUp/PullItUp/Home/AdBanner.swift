@@ -47,9 +47,9 @@ class AdBannerViewModel {
         timer?.invalidate() // 타이머 무효화
     }
     
-    // 30초마다 광고를 갱신하는 타이머 설정
+    // 30초마다 광고를 갱신하는 타이머 설정- 5초로 변경: 프로토타입 시연
     private func adRefreshTimer() {
-        timer = Timer.scheduledTimer(withTimeInterval: 30.0, repeats: true) { [weak self] _ in
+        timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true) { [weak self] _ in
             self?.loadRandomAd()
         }
     }

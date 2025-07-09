@@ -18,15 +18,9 @@ struct Seemore: View {
                         Spacer() // 텍스트를 왼쪽에 정렬하고 오른쪽에 화살표를 붙임
                     }
                     .font(.headline)
-                    .padding(.vertical, )
-                    .contentShape(Rectangle())
+
 
                 }
-                
-                
-                .listRowSeparator(.hidden) // 기본 구분선 숨기기
-
-                Divider() // 항목 사이에 구분선 추가
 
                 // 두 번째 항목: 원서접수 안내
                 NavigationLink(destination: Reception()) {
@@ -35,11 +29,8 @@ struct Seemore: View {
                         Spacer()
                     }
                     .font(.headline)
-                    .padding(.vertical, 10)
                 }
-                .listRowSeparator(.hidden) // 기본 구분선 숨기기
             }
-            .listStyle(.plain) // 리스트 스타일을 Plain으로 설정하여 깔끔하게 보임
             .navigationTitle(Text("더보기")) // 상단 타이틀
             .navigationBarTitleDisplayMode(.automatic) // 타이틀 표시 모드
         }
