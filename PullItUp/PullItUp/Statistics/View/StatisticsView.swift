@@ -95,7 +95,7 @@ struct StatisticsView: View {
                         }
                     }
                 }
-
+                
                 if !filteredSessions.isEmpty,
                    let selected = selectedSession,
                    filteredSessions.contains(where: { $0.id == selected.id }) {
@@ -142,15 +142,20 @@ struct StatisticsView: View {
     }
     
     func loadAllSessions() {
-        // 퀴즈 세션 값 불러오기
+        // 종료된 모든 퀴즈 세션을 불러오기
         let descriptor = FetchDescriptor<QuizSession>(
             predicate: #Predicate { $0.endedAt != nil },
-            sortBy: [SortDescriptor(\.endedAt, order: .reverse)]
+            sortBy: [SortDescriptor(\.startedAt, order: .reverse)]
         )
         
         do {
             allSessions = try context.fetch(descriptor)
-            selectedSession = allSessions.first
+            
+            // 자격증 목록 업데이트
+            if let firstLicense = licenseNames.first {
+                selectedLicense = firstLicense
+                updateLatestSession(for: firstLicense)
+            }
         } catch {
             print("세션 로딩 실패: \(error)")
         }
