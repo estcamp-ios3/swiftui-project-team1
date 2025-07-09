@@ -28,10 +28,6 @@ struct ContentView: View {
                     Seemore()
                 }
             }
-            
-            Tab("테스트", systemImage: "chart.bar.xaxis") {
-                TestView()
-            }
         }
         .task {
             // ContentView 열릴 때 딱 한번만 호출됨
