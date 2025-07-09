@@ -17,7 +17,7 @@ struct Quiz: Identifiable, Codable {
     let subject: String
 }
 
-func loadQuizListData(filename: String = "jcg_210814") -> [Quiz] {
+func loadQuizListData(filename: String = "정보처리기사_20210814") -> [Quiz] {
     guard let url = Bundle.main.url(forResource: filename, withExtension: "json") else {
         print("❗️JSON 파일을 찾을 수 없습니다.")
         return []
