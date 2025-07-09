@@ -96,8 +96,8 @@ struct HomeView: View {
                 case .tenTest:
                      TenTestView(selectedLicense: $selectedLicense)
                 case .mockTest:
-//                        MockTestView(selectedLicense: $selectedLicense)
-                        MockExamQuestionsView(selectedLicense: $selectedLicense)
+                        MockTestView(selectedLicense: $selectedLicense)
+//                        MockExamQuestionsView(selectedLicense: $selectedLicense)
                 }
             }
         }
