@@ -50,7 +50,6 @@ struct TenTestView: View {
     }
 
     var body: some View {
-        NavigationView {
             ZStack(alignment: .bottom) {
                 VStack(spacing: 0) {
                     // 상단 종료 버튼
@@ -295,8 +294,8 @@ struct TenTestView: View {
             .navigationBarBackButtonHidden(true)
             .toolbar(.hidden, for: .tabBar)
             .onAppear { startTimer() }
-            .onDisappear { timerActive = false }
-        }
+            .onDisappear { timerActive = true }
+        
     }
 
     // 타이머 시작 함수
