@@ -9,44 +9,34 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
-
+    // .modelContainer 주입 시, modelContext도 자동 생성됨
+    // context를 통해 insert, delete 등등이 가능함
+    @Environment(\.modelContext) private var context
+    
     var body: some View {
-        // 이 주석은 지우셔도 됩니다.
-        // 탭 개발 맡으신 분들은,
         TabView {
             Tab("홈", systemImage: "house") {
-                Text("홈 화면")
+                HomeView()
             }
             
-            Tab("통계", systemImage: "square.and.pencil") {
-                Text("통계")
+            Tab("통계", systemImage: "chart.bar.xaxis") {
+                StatisticsView()
             }
             
-            Tab("더보기", systemImage: "square.and.pencil") {
-                Text("더보기")
+            Tab("더보기", systemImage: "ellipsis") {
+                NavigationStack{
+                    Seemore()
+                }
             }
         }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
-            }
+        .task {
+            // ContentView 열릴 때 딱 한번만 호출됨
+            // 파일 체크(존재 유무)를 위해, @Environment를 통해 context를 받아서 파라미터로 전달
+            DataLoader.loadJSONAndSave(modelContext: context)
         }
     }
 }
 
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
 }

@@ -1,0 +1,1502 @@
+[
+  {
+    "licenseName": "정보보안기사",
+    "number": 1,
+    "question": "서버 시스템의 접근통제 관리에 대한 설명으로 틀린 것은?",
+    "options": [
+      "윈도우 시스템 이벤트에는 시스템, 어플리케이션, 보안 이벤트가 있으며 감사로그는 제어판-관리도구-로컬보안설정-감사정책에서 각각 설정할 수 있다.",
+      "윈도우 시스템은 도메인 환경에서 사용자 인증을 위하여 레지스트리가 익명의 사용자에 의해 접근할 수 있도록 설정하여야 한다.",
+      "iptables, tcp wrapper 도구를 사용하면 서버 시스템의 네트워크 접근통제 기능을 설정할 수 있다.",
+      "Unix 서버 시스템에서 불필요한 파일에 설정된 SUID와 SGID 비트를 제거하여 실행 권한이 없는 프로그램의 비인가된 실행을 차단하여야 한다."
+    ],
+    "answer": "2",
+    "explanation": "시스템에는 익명의 사용자에 의해 레지스트리가 접근할 수 없도록 설정해야한다",
+    "subject": "시스템보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 2,
+    "question": "다음은 passwd 파일 구조를 나타내는 그림이다. “G”가 의미하는 것은?",
+    "options": [
+      "홈디렉터리 위치",
+      "지정된 셸(Shell)",
+      "패스워드",
+      "설명"
+    ],
+    "answer": "2",
+    "explanation": "A : 사용자 ID\nB : x 패스워드는 shadow파일에 저장되어 있는 것을 의미\nC : User ID\nD : Group ID\nE : 설명\nF : 사용자 홈 디렉토리\nG : 사용자가 사용하는 Shell",
+    "subject": "시스템보안",
+    "imageName": "정보보안기사_20220625_02_01"
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 3,
+    "question": "안드로이드 adb를 통해 접속 후 쓰기 가능한 디렉터리는?",
+    "options": [
+      "/system/",
+      "/data/app",
+      "/data/local/tmp/",
+      "/bin/"
+    ],
+    "answer": "3",
+    "explanation": "안드로이드 디바이스에서 ADB를 통해 접속한 후 쓰기 가능한 디렉터리는 다양함.\n일반적으로 다음과 같은 디렉터리가 쓰기 가능한 영역으로 알려져 있음\n/data: 이 디렉터리는 안드로이드 시스템 데이터가 저장되는 곳으로, 일반적으로 앱의 데이터나 설정이 저장됨.\n       이 디렉터리는 ADB를 통해 접근할 수 있지만, 일반적으로 루팅된 디바이스에서만 쓰기 권한을 갖습니다.\n       -/data/local/tmp/  파일을 저장하거나 임시로 사용\n       -/data/app :사용자가 설치한 앱의 APK 파일이 저장됨.읽기 전용으로 설정됨.\n\n/sdcard 또는 /mnt/sdcard: 보통 사용자의 파일이나 미디어 등이 저장됩니다. ADB를 통해 쓰기 및 읽기 가능.\n/storage/emulated/0: 사용자의 내부 저장소. 보통 /sdcard와 같은 위치. ADB를 통해 쓰기 및 읽기 가능.\n/mnt/sdcard/Android/data/:앱의 데이터가 저장되는 위치.ADB를 통해 쓰기 및 읽기가 가능",
+    "subject": "시스템보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 4,
+    "question": "다음 문장에서 설명하는 공격 위협은?",
+    "options": [
+      "XPath 인젝션",
+      "디렉터리 인덱싱",
+      "운영체제 명령 실행",
+      "정보 누출"
+    ],
+    "answer": "4",
+    "explanation": "주어진 문장에서 웹 사이트의 중요한 정보가 노출될 경우에 대해 설명하고 있기 때문입니다.",
+    "subject": "시스템보안",
+    "imageName": "정보보안기사_20220625_04_01"
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 5,
+    "question": "인증 장치에 대한 설명으로 옳은 것은?",
+    "options": [
+      "USB 메모리에 디지털 증명서를 넣어 인증 디바이스로 하는 경우 그 USB 메모리를 접속하는 PC의 MAC 어드레스가 필요하다.",
+      "성인의 홍채는 변화가 없고 홍채 인증에서는 인증 장치에서의 패턴 갱신이 불필요하다.",
+      "정전용량 방식의 지문인증 디바이스 LED 조명을 설치한 실내에서는 정상적으로 인증할 수 없게 될 가능성이 높다.",
+      "인증에 이용되는 접촉형 IC 카드는 카드 내의 코일의 유도 기전력을 이용하고 있다."
+    ],
+    "answer": "2",
+    "explanation": "아래와 같은 오류 신고가 있었습니다.\n여러분들의 많은 의견 부탁 드립니다.\n추후 여러분들의 의견을 반영하여 정답을 수정하도록 하겠습니다.\n참고로 정답 변경은 오류 신고 5회 이상일 경우 수정합니다.\n\n[오류 신고 내용]\n인증장치에 대한 설명으로 옳은 것을 선택하라고 했는데 2번은 옳지 않은 것 입니다.\n홍채는 나이가 들면서 점차 변화하게 되므로 주기적으로 패턴을 갱신 시킬 필요가 있습니다.\n따라서 5번문제는 옳은 것을 선택하라고 했으므로 2번은 정답이 아니라고 생각합니다.",
+    "subject": "시스템보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 6,
+    "question": "컴퓨터 시스템에 대한 하드닝(Hardening) 활동으로 틀린 것은?",
+    "options": [
+      "사용하지 않는 PDF 소프트웨어를 제거하였다.",
+      "시스템 침해에 대비하여 전체 시스템에 대한 백업을 받아두었다.",
+      "운영체제의 감사 기능과 로깅 기능을 활성화하였다.",
+      "운영체제 보안 업데이트를 수행하였다."
+    ],
+    "answer": "2",
+    "explanation": "하드닝은 다음과 같은 작업을 수행\n- 악성 코드 및 취약성 대응, 사용자 권한 필요한 권한만 부여, 중요한 데이터와 통신을 암호화, 강력한 인증 및 암호 정책, 시스템과 소프트웨어의 최신 업데이트와 보안 패치, 시스템 로그를 감사하고 모니터링, 서비스 및 포트 관리: 불필요한 서비스와 포트를 비활성화, 서버 룸 및 장비에 대한 접근 제어, 잠금장치, CCTV 등 물리적 보안을 강화, 등\n위 와 같이 하드닝은 시스템 보안을 향상시키는 중요한 과정 중 하나이다.\n하드닝: 보안을 강화하고 시스템을 보다 견고하게 만드는 작업",
+    "subject": "시스템보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 7,
+    "question": "다음 문장에서 설명하는 기억 장치의 메모리 반입 정책은?",
+    "options": [
+      "최초 적합(First fit)",
+      "최상 적합(Best fit)",
+      "최악 적합(Worst fit)",
+      "다음 적합(Next fit)"
+    ],
+    "answer": "3",
+    "explanation": "최상 적합(Best fit): 현재 요청된 크기에 가장 적합한 크기의 공간을 찾아 할당하는 방식, 사용 가능한 공간 중에서 가장 작은 크기의 공간을 선택하여 할당\n최악 적합(Worst fit): 현재 요청된 크기보다 큰 공간 중에서 가장 큰 크기의 공간을 찾아 할당하는 방식, 사용 가능한 공간 중에서 가장 큰 공간을 선택하여 할당\n다음 적합(Next fit): 이전에 할당된 공간의 다음 위치부터 탐색하여 첫 번째로 발견되는 적합한 공간에 할당하는 방식, 이전 할당 위치를 기억하고 있어서 다음 할당을 해당 위치부터 시작",
+    "subject": "시스템보안",
+    "imageName": "정보보안기사_20220625_07_01"
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 8,
+    "question": "악성프로그램에 대한 설명으로 틀린 것은?",
+    "options": [
+      "바이러스 : 한 시스템에서 다른 시스템으로 전파하기 위해서 사람이나 도구의 도움이 필요한 악성프로그램이다.",
+      "웜 : 한 시스템에서 다른 시스템으로 전파하는데 있어서 외부의 도움이 필요하지 않은 악성프로그램이다.",
+      "백도어 : 사용자의 동의없이 설치되어 컴퓨터 정보 및 사용자 개인정보를 수집하고 전송하는 악성프로그램이다.",
+      "논리 폭탄 : 합법적 프로그램 안에 내장된 코드로서 특정한 조건이 만족되었을 때 작동하는 악성 코드이다."
+    ],
+    "answer": "3",
+    "explanation": "",
+    "subject": "시스템보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 9,
+    "question": "다음은 SUID 프로그램이 일반 권한에서 관리자 권한으로 상승하여 처리하는 정상적인 과정을 나타내고 있다. 심볼릭 링크를 이용한 레이스 컨디션 공격이 실행되는 단계는?",
+    "options": [
+      "1단계",
+      "2단계",
+      "3단계",
+      "4단계"
+    ],
+    "answer": "3",
+    "explanation": "레이스 컨디션(Race Condition) 공격은 다중 스레드 환경에서 발생하는 보안 취약점으로\n일반적으로 다음과 같은 단계로 진행됨\n*SUID(Set User ID) 프로그램은 일반 사용자가 특정 프로그램을 루트(superuser) 권한으로\n실행할 수 있도록 하는 리눅스/유닉스 시스템에서 사용됨.\n\n1) SUID 프로그램 실행:\n일반 사용자가 SUID로 설정된 프로그램을 실행하면 해당 프로그램은 루트 권한으로 실행됩니다.\n\n2)공격 코드 삽입:\nSUID 프로그램이 실행되는 동안 해당 프로그램의 취약점을 이용하여 악의적인 코드를 삽입\n이 코드는 보안 검사를 우회하거나 권한을 상승시키는 데 사용될 수 있습니다.\n\n3)경쟁 조건 생성:\nSUID 프로그램을 실행하는 동안 공격 코드가 실행될 수 있도록 경쟁 조건을 생성\n일반적으로 다중 스레드 환경에서 발생하는데, 악의적인 코드는 SUID 프로그램 실행 전에 삽입되어야 함.\n\n4)악의적인 코드 실행:\n경쟁 조건이 발생 후 악의적인 코드가 실행되어 보안 검사를 우회하거나 권한을 상승시키는 등의 작업 수행\n이를 통해 공격자는 루트 권한으로 시스템에 액세스할 수 있게 됨",
+    "subject": "시스템보안",
+    "imageName": "정보보안기사_20220625_09_01"
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 10,
+    "question": "다음은 IDS Snort Rule이다. Rule이 10~11번째 2바이트의 값이 0xFFFF인지를 검사하는 Rule이라 할 때 ㉠~㉢의 올바른 키워드는 무엇인가?",
+    "options": [
+      "㉠ : value, ㉡ : offset, ㉢ : content",
+      "㉠ : value, ㉡ : content, ㉢ : offset",
+      "㉠ : content, ㉡ : depth, ㉢ : offset",
+      "㉠ : content, ㉡ : offset, ㉢ : depth"
+    ],
+    "answer": "4",
+    "explanation": "Snort는 오픈소스 기반의 네트워크 침입 차단/ 탐지시스템이다. 실시간 트래픽 분석과 IP에서의 패킷 로깅 수행, 프로토콜 분석, 내용검색과 매칭을 수행할 수 있다.\n문제의 규칙에 대한 해석은 아래와 같다.\nalert [탐지하면 경고발생] tcp [탐지할 프로토콜] any any [출발지 IP와 포트] -> [탐지방향으로 출발지에서 목적지로 가는 패킷 탐지] any any[ 목적지 IP와 포트] ( flow:to_server [서버로 전송된 패킷에 대해 true를 리턴]; content:\"|FFFF|\"[탐지할 문자패턴]; offset:9[검색시작할 패킷위치]; depth:2[패턴을 찾기위해 검사할 byte수];msg:\"Error\"[출력할 메시지], sid:1000002[Snort ID];)",
+    "subject": "시스템보안",
+    "imageName": "정보보안기사_20220625_10_01"
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 11,
+    "question": "매크로 바이러스에 대한 설명으로 틀린 것은?",
+    "options": [
+      "플랫폼과 무관하에 실행된다.",
+      "주로 이메일을 통해 감염된다.",
+      "문서 파일의 기능을 악용한다.",
+      "EXE 형태의 자동화된 기능을 포함한다."
+    ],
+    "answer": "4",
+    "explanation": "매크로 바이러스란?\n주로 문서 파일 (예: Microsoft Word, Excel, PowerPoint)의 매크로 기능을 악용하여 작동하는 악성 코드\n* EXE 형태의 자동화된 기능은 매크로 바이러스와는 다른 유형의 악성 코드임",
+    "subject": "시스템보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 12,
+    "question": "Window에서 파일이 삭제된 직후 일정 시간(기본 15초)안에 동일한 이름의 파일이 생성되는 경우 방금 삭제된 파일의 테이블 레코드를 재사용하는 경우가 있다. 이러한 특징을 갖는 기능은?",
+    "options": [
+      "파일시스템 터널링(File system tunneling)",
+      "Shellbags",
+      "윈도우 파일 프로텍션",
+      "타임스톰핑"
+    ],
+    "answer": "1",
+    "explanation": "파일 시스템 터널링(File System Tunneling) :\nMicrosoft Windows 운영 체제에서 컴퓨터 보안 및 데이터 복구 관련 용어 중 하나.\n일반적으로 파일을 삭제하거나 이동하면 해당 파일의 메타데이터는 파일 시스템에 남아있지만,\n해당 파일의 데이터는 삭제되거나 이동된 공간에 남게 됨. 이러한 상황에서 파일 시스템 터널링은\n삭제된 파일이나 이동된 파일의 메타데이터를 추적, 분석하여 이전에 삭제되거나 이동된 파일의\n데이터를 식별하고 복구 소프트웨어가 이를 활용하여 파일을 복구하는데 사용\n\nShellbags:\nMicrosoft Windows 운영 체제에서 사용되는 파일 탐색기의 기능 중 하나\n폴더의 사용자 지정 설정 및 특성을 기록하고 저장하는 시스템.\nWindows 탐색기는 사용자가 폴더를 열거나 탐색할 때 해당 폴더의 모양, 표시 설정, 정렬 방식,\n보기 옵션 등을 기억하고 저장하고 이 정보는 레지스트리 내의 특정 위치에 저장되며,\n이 위치를 Shellbags라고 함.\nShellbags 정보는 개인 정보 보호와 관련하여 보안 문제를 일으킬 수 있음.\n예) 사용자의 폴더 탐색 기록을 사용한 사용자의 활동을 추적,  민감한 폴더 경로 노출 가능 등.\n\n윈도우 파일 프로텍션(Windows File Protection, WFP):\nMicrosoft Windows 운영 체제에서 시스템 파일의 무결성을 유지하고 시스템에 대한 악의적인\n변경을 방지하기 위해 중요한 보안 기능 중 하나.\nWFP는 주로 시스템 파일 모니터링, 변경되거나 손상된 시스템 파일 자동 복원을 통해\n시스템의 안정성과 신뢰성을 보장. 특히, 시스템 파일이 악성 소프트웨어에 의해 변경되거나\n손상될 경우, WFP는 해당 파일을 원래 상태로 복원하여 시스템의 보안을 유지함.\nWFP는 Windows NT 4.0 이후의 모든 버전에서 사용되며, 주로 중요한 시스템 파일들을\n대상으로 작동함.\n이 기능은 사용자가 임의로 시스템 파일을 변경하거나 삭제하는 것을 방지하여 시스템의 안정성을\n유지하고, 시스템 관리자가 시스템 파일에 대한 제어를 강화하는 데 도움.\n\n타임스톰핑(time-stomping):\n타임스톰핑(time-stomping)은 타임스탬프 기록을 조작하는 공격 기법.\n타임스탬프(time-stamping)는 파일이나 문서의 생성, 수정 또는 액세스 시간을 기록하는 기술로\n파일이나 문서의 변경 이력을 추적하고, 파일이나 문서의 신뢰성을 보장하기 위해 사용됨.\n공격자는 파일이나 문서의 수정 시간을 조작하여 파일의 변경 이력을 은폐하거나, 파일이나 문서가\n언제 수정되었는지를 왜곡하여 악성 파일이나 문서를 흔적 없이 퍼트리거나, 공격 이력을 은폐하여\n탐지를 우회할 수 있음",
+    "subject": "시스템보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 13,
+    "question": "리눅스 Capabilities에서 실행 바이너리에 커널 모듈을 올리거나 내릴 수 있는 권한을 할당할 수 있는 Capability는 무엇인가?",
+    "options": [
+      "CAP_CHOWN",
+      "CAP_AUDIT_CONTROL",
+      "CAP_SYS_MODULE",
+      "CAP_MAC_ADMIN"
+    ],
+    "answer": "3",
+    "explanation": "CAP_SYS_MODULE은 리눅스 커널 모듈 관리 권한을 가리키는 Capability\nCapability를 가진 프로세스는 커널 모듈을 로드하고 언로드하는 등의 작업을 수행할 수 있다.\n- CAP_CHOWN: 파일 소유자 변경 권한을 가리키는 Capability\n- CAP_AUDIT_CONTROL: 시스템 감사 로깅 설정 및 제어 권한을 가리키는 Capability\n- CAP_MAC_ADMIN: MAC 정책 관리 권한을 가리키는 Capability (접근제어 보안 메커니즘)",
+    "subject": "시스템보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 14,
+    "question": "다음 중 로그의 성격이 다른 것은?",
+    "options": [
+      "데이터베이스 로그",
+      "웹서버 로그",
+      "메일서버 로그",
+      "유닉스 계열의 syslog"
+    ],
+    "answer": "4",
+    "explanation": "",
+    "subject": "시스템보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 15,
+    "question": "윈도우 운영체제의 레지스트리에 대한 설명으로 틀린 것은?(문제 오류로 확정답안 발표시 3, 4번이 정답처리 되었습니다. 여기서는 3을 누르시면 정답 처리 됩니다.)",
+    "options": [
+      "시스템 구성정보를 저장하는 데이터베이스로 SYSTEM.DAT, USER.DAT 파일을 말한다.",
+      "레지스트리는 regedit.exe 전용 편집기에 의해서만 편집이 가능하다.",
+      "윈도우 레지스트리 키는 HKEY_CLASS_ROOT, HKEY_CURRENT_USER, HKEY_LOCAL_MACHINE, HKEY_USERS, HKEY_CURRENT_CONFIG 등이 있다.",
+      "레지스트리 백업 및 복구는 shell.exe를 구동하여 행한다."
+    ],
+    "answer": "3",
+    "explanation": "레지스트리 백업 및 복구는 보통 레지스트리 편집기(regedit.exe)를 사용하여 수행됨.\nshell.exe는 Windows 운영 체제의 셸(Shell)이나 인터페이스를 관리하는 파일로 레지스트리 백업 및 복구와\n직접적인 관련이 없음.",
+    "subject": "시스템보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 16,
+    "question": "대부분의 응용 프로그램에서 생성된 파일은 그 응용 프로그램이 생성한 파일임을 인식할 수 있도록 항상 동일한 몇 바이트를 파일 내부의 특정 위치에 가지고 있다. 특정위치의 고정값이 의미하는 것은?",
+    "options": [
+      "시그니처(Signature)",
+      "확장자(Extensions)",
+      "메타데이터(Metadata)",
+      "레코드(Record)"
+    ],
+    "answer": "1",
+    "explanation": "시그니처(Signature): 파일 시그니처는 파일의 종류를 식별하기 위해 파일의 시작 부분에 있는 고정된 바이트 시퀀스. 이를 통해 응용 프로그램은 해당 파일의 형식을 인식하고 처리\n\n확장자(Extensions): 파일 이름 끝에 붙는 확장자로 파일의 형식을 나타내지만, 파일 내부의 특정 위치와는 관련이 없음.\n\n메타데이터(Metadata): 파일에 대한 정보(예: 작성자, 생성 날짜 등)를 포함하는 데이터로, 파일의 특정 위치에 고정된 바이트를 의미하지는 않음.\n\n레코드(Record): 일반적으로 데이터베이스나 특정 포맷의 파일 내에서 데이터의 한 단위를 나타내며, 파일 형식을 식별하는 고정된 바이트 시퀀스와는 관련이 없음",
+    "subject": "시스템보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 17,
+    "question": "다음 그림은 a.a.a.a 시스템에서 UDP 패킷을 TTL=1부터 하나씩 늘려가면서 b.b.b.b로 전송하고, TTL=4일 때 b.b.b.b 시스템에 UDP 패킷이 도달하고 ICMP Port Unreachable(Type 3) 패킷이 a.a.a.a 시스템으로 돌아왓다. 무엇을 하기 위한 과정인가?",
+    "options": [
+      "ICMP scan",
+      "traceroute",
+      "ping",
+      "UDP scan"
+    ],
+    "answer": "2",
+    "explanation": "",
+    "subject": "시스템보안",
+    "imageName": "정보보안기사_20220625_17_01"
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 18,
+    "question": "다음 문장에서 설명하는 Window 시스템의 인증 구성 요소는?",
+    "options": [
+      "LSA(Local Security Authority)",
+      "LAM(Local Authentication Manager)",
+      "SAM(Security Account Manager)",
+      "SRM(Security Reference Monitor)"
+    ],
+    "answer": "4",
+    "explanation": "LSA (Local Security Authority): 보안 권한 부여, 토큰 관리,보안 정책 적용\nLAM (Local Authentication Manager):로컬 인증 처리,사용자 신원 확인,로그인 관리\nSAM (Security Account Manager):사용자 계정 정보 저장,그룹 관리,보안 계정 데이터베이스\nSRM (Security Reference Monitor):시스템 접근 모니터링,권한 검사,보안 주체 감시\n따라서 접근모니터링을 하는 것은 SRM(Security Reference Monitor)",
+    "subject": "시스템보안",
+    "imageName": "정보보안기사_20220625_18_01"
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 19,
+    "question": "BIOS에 대한 설명으로 틀린 것은?",
+    "options": [
+      "하드디스키의 구성, 종류, 용량을 확인할 수 있다.",
+      "전원이 공급되지 않으면 정보가 유지되지 않는다.",
+      "운영체제와 하드웨어 사이의 입출력을 담당하는 펌웨어이다.",
+      "BIOS에 저장된 시스템 시간은 포렌식 관점에서 중요하다."
+    ],
+    "answer": "2",
+    "explanation": "BIOS (Basic Input/Output System)는 비휘발성 메모리에 저장되어 전원이 꺼져도 데이터가 유지되는 비휘발성 메모리에 저장됩니다.",
+    "subject": "시스템보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 20,
+    "question": "다음 중 인증의 방법이 아닌 것은?",
+    "options": [
+      "당신이 알고 있는 것(Something You Know)",
+      "당신이 위치를 알고 있는 곳(Somewhere You Know)",
+      "당신이 가지고 있는 것(Something You Have)",
+      "당신 모습 자체(Something You Are)"
+    ],
+    "answer": "2",
+    "explanation": "아래와 같은 오류 신고가 있었습니다.\n여러분들의 많은 의견 부탁 드립니다.\n추후 여러분들의 의견을 반영하여 정답을 수정하도록 하겠습니다.\n참고로 정답 변경은 오류 신고 5회 이상일 경우 수정합니다.\n\n[오류 신고 내용]\n인증(Authentication)의 방법이 아닌 것은 \"4. 당신 모습 자체(Something You Are)\"입니다.\n\"당신이 알고 있는 것(Something You Know)\"은 비밀번호, 핀번호, 보안 질문과 답 등 지식적인 요소를 사용하여 인증하는 방법입니다.\n\"당신이 위치를 알고 있는 곳(Somewhere You Know)\"은 특정 장소나 위치에 대한 정보를 사용하여 인증하는 방법입니다. 예를 들어, 지정된 Wi-Fi 네트워크에 연결되어 있는지 확인하는 방법 등이 있을 수 있습니다.\n\"당신이 가지고 있는 것(Something You Have)\"은 휴대폰, 토큰, 스마트 카드 등의 물리적인 장치나 객체를 사용하여 인증하는 방법입니다.\n\"당신 모습 자체(Something You Are)\"은 생체 인증을 의미합니다. 지문, 홍채, 얼굴 인식 등 개인의 생체적인 특징이나 특징적인 패턴을 사용하여 인증하는 방법입니다.\n따라서, \"4. 당신 모습 자체(Something You Are)\"은 인증의 방법이 아닌 것입니다.",
+    "subject": "시스템보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 21,
+    "question": "패킷 필터링을 위한 규칙에 대한 설명으로 틀린 것은? (단, 서비스에 사용되는 포트는 기본값이며, Internal은 내부, External은 외부 네트워크를 의미한다.)",
+    "options": [
+      "내부에서 외부로 나가는 웹 서비스에 대해서 허용한다.",
+      "서버(169.168.2.25)로 FTP 서비스 연결은 어디에서나 가능하나 데이터 전송은 원활하게 이루어지지 않을 수 있다.",
+      "필터링 규칙에 명시하지 않은 모든 프로토콜에 대해서는 거부한다.",
+      "서버(169.168.10.10)로 DNS 서비스는 내부에서 이용이 가능하나 Message 정보가 512 바이트보다 클 경우에는 허용하지 않는다."
+    ],
+    "answer": "4",
+    "explanation": "",
+    "subject": "네트워크 보안",
+    "imageName": "정보보안기사_20220625_21_01"
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 22,
+    "question": "UDP Flooding의 대응 방안으로 틀린 것은?",
+    "options": [
+      "미사용 프로토콜 필터링",
+      "도착지 IP별 임계치 기반 차단",
+      "패킷 크기 기반 차단",
+      "Anycast를 이용한 대응"
+    ],
+    "answer": "2",
+    "explanation": "",
+    "subject": "네트워크 보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 23,
+    "question": "클라우드 시스템 및 서비스와 관련한 보안 측면의 설명으로 틀린 것은?",
+    "options": [
+      "클라우드 서비스를 구동하기 위해 필수적인 가상화 시스템 내 하이퍼바이저가 취약할 경우 이를 활용하는 여러개의 가상머신(VM)이 동시에 피해를 입을 가능성을 고려해야 한다.",
+      "기존 네트워크 보안기술(방화벽, IPS/IDS)로는 가상화 내부 영역에 대한 침입탐지가 어렵다.",
+      "사용자의 가상머신들의 상호 연결되어 내부의 가상머신에서 다른 가상 머신으로서 패킷스니핑, 해킹, DDoS 공격, 악성코드전파 등의 공격 경로가 존재한다.",
+      "가상화 기술 중 스토리지 가상화와 네트워크 가상화에 보안 위협이 존재하나 메모리 가상화에는 보안 위협이 존재하지 않는다."
+    ],
+    "answer": "4",
+    "explanation": "메모리 가상화 환경에서도 보안 취약점이 존재할 수 있으며, 예를 들어 메모리 취약점을 이용한 공격이나 가상화 환경 내부의 메모리를 탈취하거나 변조하는 공격 등이 가능",
+    "subject": "네트워크 보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 24,
+    "question": "다음 중 원격지 서버의 스니핑 모니터링 프로그램인 sentinal을 이용하여 스니퍼를 탐지하는 예시와 그에 대한 의미로 틀린 것은?",
+    "options": [
+      "./sentinel –a –t 211.47.65.4 : ARP 테스트",
+      "./sentinel –d –f 1.1.1.1 –t 211.47.65.4 : DNS 테스트",
+      "./sentinel–e –t 211.47.65.4 : Etherping 테스트",
+      "./sentinel–t 211.47.65.4 –f 1.1.1.1 –d –a - : 3개의 테스트 중 하나만 테스트"
+    ],
+    "answer": "4",
+    "explanation": "./sentinel -t 211.47.65.4 -f 1.1.1.1 -d -a -e # 3개의 테스트를 동시에 수행",
+    "subject": "네트워크 보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 25,
+    "question": "다음 문장의 괄호 안에 들어갈 명령어를 순서대로 나열한 것은?",
+    "options": [
+      "㉠ : show process, ㉡ : show controllers, ㉢ : show flash",
+      "㉠ : show process, ㉡ : show controllers, ㉢ : show memory",
+      "㉠ : show process, ㉡ : show interface, ㉢ : show flash",
+      "㉠ : show process, ㉡ : show interface, ㉢ : show memory"
+    ],
+    "answer": "2",
+    "explanation": "show process\n이 명령어는 현재 실행 중인 프로세스의 상태와 관련 정보, CPU 사용률, 메모리 사용량, 프로세스 ID 등을 포함\nshow controllers\n이 명령어는 네트워크 디바이스의 컨트롤러 상태와 관련된 정보, 이 정보는 네트워크 인터페이스의 동작, 에러 상태, 인터페이스 통계 등을 포함\nshow memory\n이 명령어는 시스템 메모리의 사용 상태와 관련된 정보, 사용 가능한 메모리 양, 사용 중인 메모리 양, 캐시 및 버퍼 사용량 등을 확인",
+    "subject": "네트워크 보안",
+    "imageName": "정보보안기사_20220625_25_01"
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 26,
+    "question": "다음 문장에서 설명하는 해커의 분류는?",
+    "options": [
+      "Elite",
+      "Script Kiddie",
+      "Developed Kiddie",
+      "Lamer"
+    ],
+    "answer": "3",
+    "explanation": "Script Kiddie: \"Script Kiddie\"는 해킹에 흥미를 가지고 있지만 전문적인 기술을 갖추지 못한 사람을 일컫습니다. Script Kiddie는 공개된 해킹 도구나 스크립트를 사용하여 공격을 시도하며, 자신의 실력이나 지식보다는 다른 사람들이 개발한 도구에 의존합니다. 일반적으로 Script Kiddie는 해킹 커뮤니티에서 경멸되는 경향이 있습니다.",
+    "subject": "네트워크 보안",
+    "imageName": "정보보안기사_20220625_26_01"
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 27,
+    "question": "SNMP 커뮤니티 스트링에 대한 설명으로 틀린 것은?",
+    "options": [
+      "기본적으로 Public, Private으로 설정된 경우가 많다.",
+      "모든 서버 및 클라이언트에서 동일한 커뮤니티 스트링을 사용해야만 한다.",
+      "MIB 정보를 주고 받기 위하여 커뮤니티 스트링을 사용한다.",
+      "유닉스 환경에서 커뮤니티 스트링 변경은 일반 권한으로 설정한다."
+    ],
+    "answer": "4",
+    "explanation": "유닉스 환경에서 커뮤니티 스트링 변경은 관리자 권한(root 권한)으로 설정한다.",
+    "subject": "네트워크 보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 28,
+    "question": "TCP 세션 하이재킹의 공격 순서로 옳은 것은?",
+    "options": [
+      "㉠→㉡→㉢→㉣→㉤",
+      "㉠→㉣→㉢→㉡→㉤",
+      "㉠→㉡→㉣→㉢→㉤",
+      "㉠→㉢→㉣→㉡→㉤"
+    ],
+    "answer": "4",
+    "explanation": "",
+    "subject": "네트워크 보안",
+    "imageName": "정보보안기사_20220625_28_01"
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 29,
+    "question": "침입탐지 시스템(Intrusion Detection System)의 이상 탐지(anomaly detection) 방법 중 다음 문장에서 설명하는 방법은 무엇인가?",
+    "options": [
+      "예측 가능한 패턴 생성(Predictive Pattern Generation)",
+      "통계적 접근법(Statictical Approaches)",
+      "비정상적인 행위 측정 방법들의 결합(anomaly measures)의 결합",
+      "특징 추출(Feature Selection)"
+    ],
+    "answer": "2",
+    "explanation": "'과거의 경험적인 자료를 토대로 처리한다'는 것은 과거의 정상 사용 패턴을 기준으로 삼겠다는 뜻이다.\n'행위를 관찰하고 각각의 행위에 대한 프로파일을 생성한다'는 것은 사용자 및 시스템의 행동으로 프로파일(행동 모델)을 만든다는 뜻이다.\n이렇게 만들어진 '프로파일들을 주기적으로 관찰하여 이상을 측정한다'는 것은 정상 사용 패턴에서 벗어나면 이상으로 간주하겠다는 뜻이다.\n따라서 통계적 접근법이 정답이다.\n\n* 과거의 경험적인 자료를 토대로 = 통계적 접근법",
+    "subject": "네트워크 보안",
+    "imageName": "정보보안기사_20220625_29_01"
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 30,
+    "question": "다음 중 일반적으로 사용되는 서비스와 해당 서비스의 기본 설정 포트연결이 틀린 것은?",
+    "options": [
+      "SSH(Secure Shell) - 22",
+      "SMTP(Simple Mail Transfer Protocol) - 25",
+      "FTP(File Transfer Protocol) - 28",
+      "HTTPS(Hyper-Text Transfer Protocol over Secure layer) - 443"
+    ],
+    "answer": "3",
+    "explanation": "FTP는 20, 21번 포트를 사용합니다.",
+    "subject": "네트워크 보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 31,
+    "question": "네트워크 도청을 예방하기 위한 대책으로 틀린 것은?",
+    "options": [
+      "업무용 무선 AP와 방문자용 AP를 같이 사용한다.",
+      "무선 AP의 비밀번호는 쉽게 예측하지 못하는 안전한 비밀번호로 설정한다.",
+      "업무용 단말기는 방문자용 AP에 접속하지 않도록 조치한다.",
+      "중요 정보는 암호화 통신을 이용하여 전송한다."
+    ],
+    "answer": "1",
+    "explanation": "",
+    "subject": "네트워크 보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 32,
+    "question": "다익스트라(Dijkstra) 알고리즘을 사용하는 라우팅 프로토콜에 대한 설명으로 틀린 것은?",
+    "options": [
+      "대규모 망에 적합한 알고리즘이다.",
+      "거리벡터 알고리즘이다.",
+      "OSPF에서 사용된다.",
+      "링크상태 알고리즘이다."
+    ],
+    "answer": "2",
+    "explanation": "거리 벡터 라우팅 알고리즘은 RIP(Routing Information Protocol)입니다.",
+    "subject": "네트워크 보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 33,
+    "question": "IPSec을 구축하기 위해 SA를 사용한다. SA 매개변수에 포함되는 내용으로 틀린 것은?",
+    "options": [
+      "AH Information",
+      "Routing Protocol",
+      "IPSec Protocol Mode",
+      "Sequence Number Counter"
+    ],
+    "answer": "2",
+    "explanation": "IPSec의 SA에서는 2번 Routing Protocol이 매개 변수로 있어야 할 이유가 없어서 2번이 답이라고도 할 수 있습니다.\n\n문제는 1번의 AH Information도 IPSec에서의 SA 매개변수는 아니라는 문제가 발생합니다.\n\n정확히는 ESP와 더불어 보안 프로토콜로써 지정은 될 수 있지만, 매개변수 영역에서 보자면 해당 없는 내용이기 때문에 직접적인 매개변수라고는 할 수 없습니다.\n\n매개변수보다는 관련이 가장 없는 것을 고르라면 2번이 단독 정답이 될 수 있지만, 매개변수라고 해버린다면 애매하게 됩니다.\n\n※ 1번이 SAD에는 들어가니까 상관없다고 한다 해도 SAD가 SA의 매개변수라고 보기는 힘들지 않나요?",
+    "subject": "네트워크 보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 34,
+    "question": "최근 장시간 악성코드를 잠복시킨 후 일정 시간이 되면 공격을 시도하여 정보 유출 및 내부망 마비 등 피해를 유발시키는 APT 공격이 잦아지고 있다. APT는 무엇의 약자인가?",
+    "options": [
+      "Advanced Pain Threat",
+      "Advanced Post Threat",
+      "Advanced Persistent Target",
+      "Advanced Persistent Threat"
+    ],
+    "answer": "4",
+    "explanation": "APT는 \"Advanced Persistent Threat\"의 약자입니다. 이는 고도화된 기술을 사용하여 장기간에 걸쳐 지속적으로 시스템에 침투하고 공격하는 위협을 의미합니다. 이러한 공격은 주로 정보 유출 및 시스템 손상을 목표로 합니다. 따라서 정답은 4번 Advanced Persistent Threat입니다.",
+    "subject": "네트워크 보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 35,
+    "question": "BYOD(Bring Your Own Device)의 보안 기술 중 다음 문장에서 설명하는 모바일 기기 보안 기술은?",
+    "options": [
+      "클라우드 DaaS(Desktop As A Service)",
+      "모바일 가상화(Hypervisors)",
+      "컨테이너화(Containerization)",
+      "가상데스크톱 인프라(Virtual Desktop Infrastructure)"
+    ],
+    "answer": "2",
+    "explanation": "모바일 가상화\n- 하나의 모바일 기기 위에 여러 개의 독립적인 OS 환경을 만드는 것으로, 각각의 환경은 자신만의 OS 인스턴스를 가진다.\n\n컨테이너화\n- 하나의 OS 위에 돌아가는 애플리케이션과 환경을 격리하는 기술로 OS 안에 여러 개의 독립적인 작업 공간을 만드는 것\n\n동일한 OS의 다중 인스턴스를 제공한다고 했으므로 정답은 모바일 가상화\n(문제에서의 '동일한' 은 '하나의' 라는 의미가 아니라 안드로이드 1, 안드로이드 2 와 같이 같은 종류의 OS를 일컫는 것으로 보임)",
+    "subject": "네트워크 보안",
+    "imageName": "정보보안기사_20220625_35_01"
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 36,
+    "question": "다음 문장의 괄호 안에 들어갈 말은?",
+    "options": [
+      "Duplex Mode",
+      "MAC",
+      "Promiscuouse Mode",
+      "ARP"
+    ],
+    "answer": "3",
+    "explanation": "",
+    "subject": "네트워크 보안",
+    "imageName": "정보보안기사_20220625_36_01"
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 37,
+    "question": "다음 공개 해킹도구 중 사용용도가 다른 도구(소프트웨어)는?",
+    "options": [
+      "넷버스(Netbus)",
+      "스쿨버스(Schoolbus)",
+      "백오리피스(Back Orifice)",
+      "키로그23(Keylog23)"
+    ],
+    "answer": "4",
+    "explanation": "",
+    "subject": "네트워크 보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 38,
+    "question": "RFID 보안 기술에서 암호 기술을 사용하는 보호대책은?",
+    "options": [
+      "Kill 명령어 기법",
+      "블로커 태그 기법",
+      "XOR(Exclusive OR) 기반 원타임 패드 기법",
+      "Sleep 명령과 Wake 명령어 기법"
+    ],
+    "answer": "3",
+    "explanation": "",
+    "subject": "네트워크 보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 39,
+    "question": "포트 스캐너로 유명한 Nmap에서 대상 시스템의 운영체제를 판단할 때 이용하는 기법을 가장 잘 표현하고 있는 것은?",
+    "options": [
+      "Telnet 접속시 운영체제가 표시하는 고유한 문자열을 분석하는 배너 그래빙(banner grabbing)",
+      "운영체제별로 지원하는 서비스 및 열려 있는 포트의 차이",
+      "운영체제별로 고유한 식별자 탐지",
+      "TCP/IP 프로토콜 표준이 명시하지 않은 패킷 처리 기능의 운영체제별 구현"
+    ],
+    "answer": "4",
+    "explanation": "운영체제별 TCP/IP 스택 구현 차이를 분석하여 탐지하는 방식\n-> TCP/IP 핑거프린팅(Fingerprinting) 기법!",
+    "subject": "네트워크 보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 40,
+    "question": "리눅스 환경에서 트래픽을 분석하기 위해 MRTG(Multi Router Traffic Grapher)를 사용한다. 다음 중 MRTG를 설치 및 수행하는데 필요없는 프로그램은?",
+    "options": [
+      "C Compiler",
+      "Perl",
+      "Gd Library",
+      "Libpcap"
+    ],
+    "answer": "4",
+    "explanation": "",
+    "subject": "네트워크 보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 41,
+    "question": "PGP 서비스와 관련하여 디지털 서명 기능을 위해 사용되는 알고리즘은?(문제 오류로 확정답안 발표시 2, 3번이 정답처리 되었습니다. 여기서는 2번을 누르시면 정답 처리 됩니다.)",
+    "options": [
+      "3DES",
+      "DSS/SHA",
+      "RSA",
+      "Radix-64"
+    ],
+    "answer": "2",
+    "explanation": "",
+    "subject": "어플레케이션 보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 42,
+    "question": "OTP에 대한 설명으로 틀린 것은?",
+    "options": [
+      "의미있는 숫자로 구성된다.",
+      "비밀번호 재사용이 불가능하다.",
+      "비밀번호 유추가 불가능하다.",
+      "사전 공격(Dictionary Attack)에 안전하다."
+    ],
+    "answer": "1",
+    "explanation": "",
+    "subject": "어플레케이션 보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 43,
+    "question": "웹 어플리케이션 취약성 조치방안에 대한 설명으로 틀린 것은?",
+    "options": [
+      "server side session 방식은 침해 가능성도 있고, 구조상 다양한 취약점에 노출될 수 있으므로 가볍고 안전한 client side의 cookie를 사용한다.",
+      "모든 인자에 대해 사용 전에 입력값 검증을 수행하도록 구성한다.",
+      "파일 다운로드시 위치는 지정된 데이터 저장소를 지정하여 사용하고 데이터 저장소 상위로 이동되지 않도록 구성한다.",
+      "SSL/TLS와 같은 기술을 이용하여 로그인 트랙잭션 전체를 암호화한다."
+    ],
+    "answer": "1",
+    "explanation": "서버 측 세션 관리가 더 안전하며, 클라이언트 측 쿠키는 보안에 취약할 수 있다.",
+    "subject": "어플레케이션 보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 44,
+    "question": "다음 문장에서 설명하는 FTP 공격은?",
+    "options": [
+      "FTP Bounce Attack",
+      "Anonymous FTP Attack",
+      "TFTP Attack",
+      "FTP Anyconnect Attack"
+    ],
+    "answer": "1",
+    "explanation": "FTP 서버가 데이터를 전송할 때 목적지가 어디인지 검사하지 않는 설계 상의 문제점을 이용한 공격 = FTP Bounce Attack\nFTP는 PASV/Port 명령어를 이용해 서버끼리 데이터를 전송할 수 있음. 이때 FTP 서버는 목적지를 검사하지 않으므로, 공격자가 임의의 포트나 IP로 데이터를 전송하도록 할 수 있음",
+    "subject": "어플레케이션 보안",
+    "imageName": "정보보안기사_20220625_44_01"
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 45,
+    "question": "웹 어플리케이션의 취약성을 악용하는 공격 방법 중 웹 페이지에 입력한 문자열이 perl의 system 함수나 PHP의 exec 함수 등에 건네지는 것을 이용해 부정하게 쉘 스크립트를 실행시키는 것은?",
+    "options": [
+      "HTTP header injection",
+      "OS command injection",
+      "CSRF(cross-site request forgery)",
+      "Session hijacking"
+    ],
+    "answer": "2",
+    "explanation": "OS 명령 인젝션(OS Command Injection 또는 Shell Injection)은 웹 애플리케이션이 구동 중인 서버의 운영체제상에서 임의의 명령을 실행하도록 하는 웹 취약점",
+    "subject": "어플레케이션 보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 46,
+    "question": "다크웹(Dark Web)에 대한 설명으로 틀린 것은?",
+    "options": [
+      "공공인터넷을 사용하는 오버레이 네트워크(Overlay Network)이다.",
+      "딥웹(Deep web)은 다크웹의 일부분이다.",
+      "토르(TOR)같은 특수한 웹브라우저를 사용해야만 접근할 수 있다.",
+      "다크넷에 존해하는 웹사이트를 의미한다."
+    ],
+    "answer": "2",
+    "explanation": "다크웹이 딥웹의 일부분입니다.",
+    "subject": "어플레케이션 보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 47,
+    "question": "다음 문장에서 설명하는 것은?",
+    "options": [
+      "SSL(Secure Socket Layer)",
+      "SET(Secure Electronic Transaction)",
+      "SOC(Security Operation Center)",
+      "Lattice Security Model"
+    ],
+    "answer": "2",
+    "explanation": "SET(Secure Electronic Transaction)이란 전자상거래에서 지불정보를 안전하고 비용효과적으로 처리할 수 있도록 규정한 프로토콜",
+    "subject": "어플레케이션 보안",
+    "imageName": "정보보안기사_20220625_47_01"
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 48,
+    "question": "DNS 캐시 포이즈닝으로 분류되는 공격은?",
+    "options": [
+      "DNS 서버의 소프트웨어 버전 정보를 얻어 DNS 서버의 보안 취약점을 판단한다.",
+      "PC가 참조하는 DNS 서버에 잘못된 도메인 관리 정보를 주입하여 위장된 웹서버로 PC 사용자를 유도한다.",
+      "공격 대상의 서비스를 방해하기 위해 공격자가 DNS 서버를 이용하여 재귀적인 쿼리를 대량으로 발생시킨다.",
+      "내부 정보를 얻기 위해 DNS 서버에 저장된 영역 정보를 함께 전송한다."
+    ],
+    "answer": "2",
+    "explanation": "",
+    "subject": "어플레케이션 보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 49,
+    "question": "DDos 공격 형태 중 자원 소진 공격이 아닌 것은?",
+    "options": [
+      "ICMP Flooding",
+      "SYN Flooding",
+      "ACK Flooding",
+      "DNS Query Flooding"
+    ],
+    "answer": "1",
+    "explanation": "DDoS 공격 형태:\n- 대역폭 소진 공격: UDP, ICMP Flooding\n- 자원 소진 공격: SYN, ACK Flooding, DNS Query Flooding\n- 웹/DB 부하 유발 공격: GET, POST Flooding, Slowloris, RUDY\n참고: 한국인터넷진흥원 DDoS 공격 대응 가이드",
+    "subject": "어플레케이션 보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 50,
+    "question": "다음 표의 소극적·적극적 암호공격 방식의 구분이 옳은 것은?",
+    "options": [
+      "①",
+      "②",
+      "③",
+      "④"
+    ],
+    "answer": "1",
+    "explanation": "소극적 공격(passive attack): 가로채기(도청), 트래픽 분석(감시)",
+    "subject": "어플레케이션 보안",
+    "imageName": "정보보안기사_20220625_50_01"
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 51,
+    "question": "다음 문장의 괄호 안에 알맞은 용어는?",
+    "options": [
+      "워터링 홀",
+      "스팸",
+      "스피어피싱",
+      "랜섬웨어"
+    ],
+    "answer": "4",
+    "explanation": "",
+    "subject": "어플레케이션 보안",
+    "imageName": "정보보안기사_20220625_51_01"
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 52,
+    "question": "MS SQL 서버의 인증 모드에 대한 설명 중 성격이 다른 하나는?",
+    "options": [
+      "SQL Server 기본 인증 모드이다.",
+      "데이터베이스 관리자가 사용자에게 접근 권한 부여가 가능하다.",
+      "윈도우즈 인증 로그온 추적시 SID 값을 사용한다.",
+      "트러스트되지 않은 연결(SQL 연결)을 사용한다."
+    ],
+    "answer": "4",
+    "explanation": "",
+    "subject": "어플레케이션 보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 53,
+    "question": "다음 문장에서 설명하는 보안솔루션은?",
+    "options": [
+      "DRM",
+      "SSO",
+      "OTP",
+      "APT"
+    ],
+    "answer": "2",
+    "explanation": "Single Sign-On(SSO)은 1회 사용자 인증으로 다수의 애플리케이션 및 웹사이트에 대한 사용자 로그인을 허용하는 인증 솔루션",
+    "subject": "어플레케이션 보안",
+    "imageName": "정보보안기사_20220625_53_01"
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 54,
+    "question": "데이터베이스 보안 방법으로 틀린 것은?",
+    "options": [
+      "데이터베이스 서버를 백업하며 관리한다.",
+      "Guest 계정을 사용하여 관리한다.",
+      "데이터베이스 쿼리만 웹 서버와 데이터베이스 서버 사이에 통과할 수 있도록 방화벽을 설치한다.",
+      "데이터베이스 관리자만 로그인 권한을 부여한다."
+    ],
+    "answer": "2",
+    "explanation": "",
+    "subject": "어플레케이션 보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 55,
+    "question": "다음 문장에서 설명하는 웹 공격의 명칭은?",
+    "options": [
+      "XSS(Cross Site Scripting)",
+      "SQL(Structured Query Language) Ingection",
+      "CSRF(Cross-site request forgery)",
+      "쿠키(Cookie) 획득"
+    ],
+    "answer": "1",
+    "explanation": "",
+    "subject": "어플레케이션 보안",
+    "imageName": "정보보안기사_20220625_55_01"
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 56,
+    "question": "버퍼오버플로우에 대한 보안 대책이 아닌 것은?",
+    "options": [
+      "운영체제 커널 패치",
+      "경계 검사를 하는 컴파일러 및 링크 사용",
+      "스택내의 코드 실행 금지",
+      "포맷 스트링 검사"
+    ],
+    "answer": "4",
+    "explanation": "[버퍼 오버플로우]\n주요 원인 : 버퍼 크기 초과\n공격 기법 : 쉘코드 삽입, EIP 덮어쓰기\n\n[포맷 스트링]\n주요 원인 : 포맷 문자열 조작\n공격 기법 : 메모리 읽기, %n을 이용한 덮어쓰기",
+    "subject": "어플레케이션 보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 57,
+    "question": "SSO(Single Sign On)와 관련이 없는 것은?",
+    "options": [
+      "Delegation 검사",
+      "Propagation 방식",
+      "웹 기반 쿠키 도메인 SSO",
+      "보안토큰"
+    ],
+    "answer": "4",
+    "explanation": "SSO : 인증 토큰 사용",
+    "subject": "어플레케이션 보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 58,
+    "question": "S/MIME의 주요 기능이 아닌 것은?",
+    "options": [
+      "봉인된 데이터(Enveloped data)",
+      "서명 데이터(Signed data)",
+      "순수한 데이터(Clear-signed data)",
+      "비순수 서명과 봉인된 데이터(Unclear Signed and Enveloped data)"
+    ],
+    "answer": "4",
+    "explanation": "S/MIME:\n- 서명된 데이터: 송신자의 개인키로 서명 (무결성 및 부인방지)\n- 클리어 서명 데이터: 디지털 서명만 base64로 인코딩, S/MIME 기능이 없는 수신자도 메시지 확인 가능 (메시지는 평문으로 전송)\n- 봉인된 데이터: MIME 메시지를 암호화한 데이터 (기밀성)\n- 서명 및 봉인된 데이터: MIME 메시지에 대한 무결성, 부인방지, 기밀성 제공",
+    "subject": "어플레케이션 보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 59,
+    "question": "DNS(Domain Name System)에 대한 설명으로 틀린 것은?",
+    "options": [
+      "DNS 서비스는 클라이언트에 해당하는 리졸버(resolver)와 서버에 해당하는 네임서버(name server)로 구성되며, DNS 서비스에 해당되는 포트 번호는 53번이다.",
+      "주(primary) 네임서버와 보조(secondary) 네임서버는 DNS 서비스 제공에 필요한 정보가 포함된 존(zone) 파일을 기초로 리졸버로부터의 요청을 처리한다.",
+      "ISP 등이 운영하는 캐시 네임서버가 관리하는 DNS 캐시에 IP 주소, UDP 포트번호, DNS 메시지 ID값이 조작된 정보를 추가함으로써 DNS 캐시 포이즈닝(poisoning) 공격이 가능하다.",
+      "DNSSEC 보안 프로토콜은 초기 DNS 서비스가 보안 기능이 포함되지 않았던 문제점을 해결하기 위해 개발되었으며, DNS 데이터의 비밀성, 무결성, 출처 인증 등의 기능을 제공한다."
+    ],
+    "answer": "4",
+    "explanation": "DNSSEC는 DNS 데이터 위변조를 막기 위해 송신자 인증 및 서명(무결성)을 제공하는 기능이다.\n단, 비밀성(암호화)는 없다.",
+    "subject": "어플레케이션 보안",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 60,
+    "question": "다음 문장에서 설명하는 전자서명 기법은?",
+    "options": [
+      "다중서명",
+      "그룹서명",
+      "은닉서명",
+      "검증자 지정서명"
+    ],
+    "answer": "3",
+    "explanation": "",
+    "subject": "어플레케이션 보안",
+    "imageName": "정보보안기사_20220625_60_01"
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 61,
+    "question": "다음은 특정 블록 암호 운영 모드의 암호화 과정이다. 해당하는 모드는?",
+    "options": [
+      "ECB 모드(Electronic Code Book Mode)",
+      "CBC 모드(Cipher Block Chaining Mode)",
+      "CFB 모드(Cipher Feedback Mode)",
+      "OFB 모드(Output Feedback Mode)"
+    ],
+    "answer": "3",
+    "explanation": "CFB 모드\n초기 IV값을 암호화한 값과 평문블록 XOR 후 암호문 블록 생성 다시 암호값과 평문블록 XOR 반복",
+    "subject": "정보 보안 일반",
+    "imageName": "정보보안기사_20220625_61_01"
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 62,
+    "question": "접근통제 모델에 대한 각각의 설명 중 옳은 것은?",
+    "options": [
+      "비바(Biba) 모델 : 임의적 접근통제(DAC: Doscretionary Access Control)를 기반으로 하는 상태 머신 모델이다.",
+      "벨-라파듈라(Bell-Lapadula) 모델 : 객체애 대한 무결성 또는 가용성을 유지하는데 중점을 두고 있으며, 기밀성의 측면에는 대처하지 않는다.",
+      "비바(Biba) 모델 : 비밀 채널을 방지하며, 내부 및 외부 객체 일관성을 보호한다.",
+      "클락-윌슨(Clark-Wilson) 모델 : 허가 받은 사용자가 허가 받지 않고 데이터를 수정하는 것을 방지한다."
+    ],
+    "answer": "4",
+    "explanation": "",
+    "subject": "정보 보안 일반",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 63,
+    "question": "해시함수의 분류 중 MDC(Modification Detection Cryptography)에 포함되지 않는 알고리즘은?",
+    "options": [
+      "MD(Message Digest)",
+      "SHA(Secure Hash Algorithm)",
+      "LSH(Lightweight Secure Hash)",
+      "H-MAC(Hash-MAC)"
+    ],
+    "answer": "4",
+    "explanation": "",
+    "subject": "정보 보안 일반",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 64,
+    "question": "실시간으로 인증서 유효성을 검증하는 OCSP(Online Certificate Status Protocol)의 서비스가 아닌 것은?",
+    "options": [
+      "ORS : 온라인 취소상태 확인서비스",
+      "DPD : 대리인증 경로 발전 서비스",
+      "CRL : 인증서 폐지 목록 확인서비스",
+      "DPV : 대리인증 경로 검증 서비스"
+    ],
+    "answer": "3",
+    "explanation": "CLR : 공개키 기반 구조/ 해지 혹은 유효하지 않은 인증서의 목록이다.",
+    "subject": "정보 보안 일반",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 65,
+    "question": "접근통제정책 구성요소에 대한 설명으로 틀린 것은?",
+    "options": [
+      "사용자 : 시스템을 사용하는 주체이다.",
+      "자원 : 사용자가 사용하는 객체이다.",
+      "행위 : 객체가 행하는 논리적 접근통제이다.",
+      "관계 : 사용자에게 승인된 허가(읽기, 쓰기, 실행)이다."
+    ],
+    "answer": "3",
+    "explanation": "행위 : 접근 권한을 부여하는 절차",
+    "subject": "정보 보안 일반",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 66,
+    "question": "다음 중 전자서명인증업무지침에 따라 공인인증기관이 지켜야 할 구체적인 사항이 아닌 것은?",
+    "options": [
+      "공인인증서의 관리에 관한 사항",
+      "전자서명생성정보의 관리에 관한 사항",
+      "공인인증기관 시설의 보호에 관한 사항",
+      "공인인증기관 지정 절차에 관한 사항"
+    ],
+    "answer": "4",
+    "explanation": "",
+    "subject": "정보 보안 일반",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 67,
+    "question": "IAM(Identity Access Management)에 대한 설명으로 틀린 것은?",
+    "options": [
+      "전사적 계정관리, 권한관리의 구현에 필요한 모든 요소들을 일반적으로 IAM이라고 부른다.",
+      "IAM은 계정관리를 담당하는 IM분야와 권한통제를 담당하는 AM으로 나눠진다.",
+      "사용자가 시스템을 사용하기 위해 로그인 ID를 발급하는 과정을 프로비저닝이라고 한다.",
+      "사용자가 시스템에 로그인할 때 본인임을 증빙하는 과정을 인가(Authorization)라고 한다."
+    ],
+    "answer": "4",
+    "explanation": "4 . 인가(Authorization) 인증받은 사용가자 어떤 자원에 접근하려고 할 때 해당 자원에 대한 적절한 권한을 가지고 있는지에 대한 검증\n인증(Authentication) : 시스템에 접근하는 사용자가 해당 사용자가 맞는지에 대한 검증",
+    "subject": "정보 보안 일반",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 68,
+    "question": "전자서명을 적용한 예에 해당되지 않는 것은?",
+    "options": [
+      "Code Signing",
+      "X.509 Certificate",
+      "SSL/TLS Protocol",
+      "Kerberos Protocol"
+    ],
+    "answer": "4",
+    "explanation": "커버로스 프로토콜\n- 티켓기반의 컴퓨터 네트워크 인증 프로토콜 임.",
+    "subject": "정보 보안 일반",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 69,
+    "question": "다음 문장과 같이 처리되는 프로토콜은?",
+    "options": [
+      "Diffie-Hellman",
+      "Needhan-Schroeder",
+      "Otway-Rees",
+      "Kerberos"
+    ],
+    "answer": "2",
+    "explanation": "Needhan-Schroeder\n- Roger Needham과 Micheal Schroedor이 1978년 대칭키와 trent 개념을 사용해 제안\n- 인증서버 S / 통신주체 A / 통신주체 B 가있다고 가정하고 설명(K는 키값 / N은 난수값)\n-- 1) A → S : A / B / N_A\n--- (A가 S에게 B와 통신하고 싶다고 알림 ; A와 B의 ID와 A가 생성한 난수값보냄\n-- 2) S → A : N_A / K_ab / B / [ [ K_ab, A ]K_bs ]K_as\n--- (S가 A에게, B와 통신할 때 쓸 키 K_ab를 주고, B에게도 알려주라고 K_ab를 K_bs로 암호화 해서 줌\n-- 3) A → B : [ K_ab, A ]K_bs\n--- 아까 S가 B주라고 줬던걸, B한테 보내줘\n-- 4) B → A : [ N_b ]K_ab\n--- A로부터 키 값 K_ab를 받은 B는 응답신호로써 자신이 생성한 난수값 N_b를 암호화 해서 보냄\n-- 5) A → B : [ N-b - 1 ]K_ab\n--- B로부터 받은 난수값에서 1빼고 암호화 해서 보내\n- 재전송 공격의 취약점이 있음(MITM에 취약) 그래서 타임스탬프를 사용함\n-- 타임스탬프사용해서 하는건 위의 1)에서 타임스탬프를 주거니 받거니함(걍 생략)",
+    "subject": "정보 보안 일반",
+    "imageName": "정보보안기사_20220625_69_01"
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 70,
+    "question": "송신자 A와 수신자 B가 RSA를 이용하여 키를 공유하는 방법에 대한 설명으로 틀린 것은?",
+    "options": [
+      "미국 MIT의 Rivest, Shamir, Adelman이 발표한 공개키 암호화 방식으로 이해와 구현이 쉽고, 검증이 오랫동안 되어서 가장 널리 쓰이고 있다.",
+      "A가 암호화 되지 않은 평문으로 A의 공개키를 B에게 전송한다.",
+      "B는 공유 비밀키를 생성, A에게서 받은 A의 공개키로 암호화 전송한다.",
+      "A는 자신의 공개키로 공유 비밀키를 추출하고 데이터를 암호화 전송한다."
+    ],
+    "answer": "4",
+    "explanation": "",
+    "subject": "정보 보안 일반",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 71,
+    "question": "암호문에 대응하는 일부 평문이 가용한 상황에서의 암호 공격 방법은?",
+    "options": [
+      "암호문 단독 공격",
+      "알려진 평문 공격",
+      "선택 평문 공격",
+      "선택 암호문 공격"
+    ],
+    "answer": "2",
+    "explanation": "암호분석 방법:\n- 암호문 단독 공격: 공격자가 암호문만 가지고 있는 상황에서 공격, 가장 어려운 방법 -> 무차별 대입, 빈도수 분석 등 이용\n- 알려진 평문 공격: 공격자가 약간(일부)의 평문과 이에 대응하는 암호문을 가진 상태에서 공격, 선형 공격\n- 선택 평문 공격: 공격자가 다수의 평문을 암호문으로 만들 수 있는 상황에서 공격\n(공격자가 암호화 프로그램에 접근 가능, but 암호키, 알고리즘은 모름)\n- 선택 암호문 공격: 공격자가 다수의 암호문에 대응하는 평문을 얻을 수 있는 상황에서 공격\n(공격자가 복호화 프로그램에 접근 가능, but 암호키, 알고리즘은 모름)",
+    "subject": "정보 보안 일반",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 72,
+    "question": "합성수 n을 사용하는 RSA 전자서명 환경에서 메시지 M에 대해 난수 r에 공개 검증키 e를 가지고 reM mod n값을 서명자에게 전송하는 전자서명 기법은 무엇인가?",
+    "options": [
+      "은닉서명",
+      "위임서명",
+      "부인방지 서명",
+      "이중서명"
+    ],
+    "answer": "1",
+    "explanation": "",
+    "subject": "정보 보안 일반",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 73,
+    "question": "다음 문장에서 설명하는 위험분석 방법론을 옳게 연결한 것은?",
+    "options": [
+      "㉠ : 확률 분포법, ㉡ : 순위결정법",
+      "㉠ : 시나리오법, ㉡ : 델파이법",
+      "㉠ : 델파이법, ㉡ : 확률 분포법",
+      "㉠ : 시나리오법, ㉡ : 순위결정법"
+    ],
+    "answer": "4",
+    "explanation": "",
+    "subject": "정보 보안 일반",
+    "imageName": "정보보안기사_20220625_73_01"
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 74,
+    "question": "다음 중 공개키 암호의 필요성으로 틀린 것은?",
+    "options": [
+      "무결성",
+      "키 관리 문제",
+      "인증",
+      "부인방지"
+    ],
+    "answer": "1",
+    "explanation": "[공개키 암호화의 필요성 ]\n\n키 관리 문제\n- 비밀키의 배분 , 공유 문제\n- 키의 저장 및 관리 문제\n인증\n- 메시지의 주인을 인증할 필요가 있음\n부인 방지\n- 메세지의 주인이 아니라고 부인하는 것을 방지",
+    "subject": "정보 보안 일반",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 75,
+    "question": "다음 중 커버로스(Kerberos)의 구성요소가 아닌 것은?",
+    "options": [
+      "KDC(Key Distribution Center)",
+      "TGS(Ticket Granting Service)",
+      "AS(Authetication Service)",
+      "TS(Token Service)"
+    ],
+    "answer": "4",
+    "explanation": "커버로스 구성요소: client, KDC, AS, TGS, kerberos DB로 구성됨",
+    "subject": "정보 보안 일반",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 76,
+    "question": "공개키 암호 알고리즘이 아닌 것은?",
+    "options": [
+      "RSA(Rivest, Shamir, Adelman)",
+      "ECC(Elliptic, Curvem Cryptosystems)",
+      "ElGamal",
+      "Rijndeal"
+    ],
+    "answer": "4",
+    "explanation": "Rijndael은 대칭키 암호 알고리즘으로, AES(Advanced Encryption Standard)로 표준화되었음. 나머지 옵션들은 공개키 암호 알고리즘에 해당함",
+    "subject": "정보 보안 일반",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 77,
+    "question": "키를 분배하는 방법이 아닌 것은?",
+    "options": [
+      "KDC(Key Distribution Center)",
+      "공개키 암호시스템",
+      "Diffie-Hellman 키 분배 알고리즘",
+      "Kerberos"
+    ],
+    "answer": "4",
+    "explanation": "주요 키 분배/관리 방식\n- 키 분배 센터(KDC를 이용하는 방법)\n- 키 교환에 의한 방법(주로 Diffie-Helman 방법에 의한 키 교환 알고리즘)\n- 공개키 기반 구조에 의한 공개키 암호화 방법\n출처 - 정보통신기술용어해설",
+    "subject": "정보 보안 일반",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 78,
+    "question": "해시함수 h와 주어진 입력값 x에 대해 h(x)=h(x′)을 만족하는 x′(≠x)를 찾는 것이 계산적으로 불가능한 것을 의미하는 것은?",
+    "options": [
+      "압축성",
+      "일방향성",
+      "두 번째 역상저항성",
+      "충돌 저항성"
+    ],
+    "answer": "3",
+    "explanation": "",
+    "subject": "정보 보안 일반",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 79,
+    "question": "다음 문장에서 설명하는 것은?",
+    "options": [
+      "타원 곡선 암호 시스템",
+      "하이브리드 암호 시스템",
+      "세션 키(의사난수 생성기)",
+      "이중 암호 시스템"
+    ],
+    "answer": "2",
+    "explanation": "타원 곡선 암호 시스템: 타원 곡선을 이용한 공개키 암호 시스템입니다.\n하이브리드 암호 시스템: 대칭 암호와 공개키 암호를 결합한 시스템입니다.\n세션 키(의사난수 생성기): 통신 세션 동안 사용되는 일회용 대칭 키를 생성하는 방법입니다.\n이중 암호 시스템: 두 개의 암호 알고리즘을 사용하는 시스템입니다.",
+    "subject": "정보 보안 일반",
+    "imageName": "정보보안기사_20220625_79_01"
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 80,
+    "question": "메시지 출처 인증(Message Origin Authentication)에 활용되는 암호 기술 중 대칭키 방식에 해당하는 것은?",
+    "options": [
+      "전자서명",
+      "해시함수",
+      "이중서명",
+      "메시지 인증 코드"
+    ],
+    "answer": "4",
+    "explanation": "",
+    "subject": "정보 보안 일반",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 81,
+    "question": "주요 직무자 지정 및 관리시 고려해야 할 사항으로 틀린 것은?",
+    "options": [
+      "개인정보 및 중요정보의 취급, 주요 시스템 접근 등 주요 직무의 기준을 명확히 정의하여야 한다.",
+      "주요 직무를 수행하는 임직원 및 외부자를 주요 직무자로 지정하고 그 목록을 최신으로 관리하여야 한다.",
+      "업무 필요성에 따라 주요 직무자 및 개인정보취집자 지정을 최소화하는 등 관리방안을 수립·이행하여야 한다.",
+      "파견근로자, 시간제근로자 등을 제외한 임직원 중 업무상 개인정보를 취급하는 자를 개인정보취급자로 지정하고 목록을 관리하여야 한다."
+    ],
+    "answer": "4",
+    "explanation": "주요 직무자 지정 및 관리시 확인사항\n- 개인정보 및 중요정보의 취급, 주요 시스템 접근 등 주요 직무의 기준을 명확히 정의하고 있는가?\n- 주요 직무를 수행하는 임직원 및 외부자를 주요 직무자로 지정하고 그 목록을 최신으로 관리하고 있는가?\n- 업무상 개인정보를 취급하는 자를 개인정보취급자로 지정하고 목록을 최신으로 관리하고 있는가?\n- 업무 필요성에 따라 주요 직무자 및 개인정보취급자 지정을 최소화하는 등 관리방안을 수립,이행하고있는가?",
+    "subject": "정보보안 관리 및 법규",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 82,
+    "question": "정보통신기반보호법에서 정하는 주요 정보통신기반시설 보호계획의 수립 등에 포함되지 않는 사항은?",
+    "options": [
+      "주요정보통신기반시설의 취약점 분석·평가에 관한 사항",
+      "정보보호 책임자 지정에 관한 사항",
+      "주요정보통신기반시설 및 관리 정보의 침해사고에 대한 예방, 백업, 복구대책에 관한 사항",
+      "주요정보통신기반시설의 보호에 관하여 필요한 사항"
+    ],
+    "answer": "2",
+    "explanation": "",
+    "subject": "정보보안 관리 및 법규",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 83,
+    "question": "다음 내용에 따른 국내대리인의 필수 공개 정보로 잘못된 것은?",
+    "options": [
+      "법인명, 대표명",
+      "주소",
+      "고객센터 연락처",
+      "이메일"
+    ],
+    "answer": "3",
+    "explanation": "국내대리인 지정 절차\n국내대리인을 서면으로 지정해야 하며, ① 국내대리인의 성명\n(법인의 경우에는 그 명칭 및 대표자의 성명)과 ② 국내대리인의\n주소(법인의 경우에는 영업소 소재지), 전화번호, 전자우편 주소를\n개인정보 처리방침에 명시해야 함\n- 복수의 국내대리인이 지정된 경우 지정된 국내대리인 모두에 대한\n관련 정보를 개인정보 처리방침을 통해 공개하여야 함\n출처: 국내대리인 지정제도 안내서 - 개인정보보호 종합포털",
+    "subject": "정보보안 관리 및 법규",
+    "imageName": "정보보안기사_20220625_83_01"
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 84,
+    "question": "정보통신기반 보호법에 의거하여 주요정보통신기반시설을 지정할 때 주요 고려사항으로 틀린 것은?",
+    "options": [
+      "다른 정보통신기반시설과의 상호연계성",
+      "업무의 정보통신기반시설에 대한 의존도",
+      "업무의 개인정보 보유 건수",
+      "정보통신기반시설을 관리하는 기관이 수행하는 업무의 국가사회적 중요성"
+    ],
+    "answer": "3",
+    "explanation": "",
+    "subject": "정보보안 관리 및 법규",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 85,
+    "question": "정보통신망 이용 촉진 및 정보 보호 등에 관한 법률에서 정의하는 용어에 대한 설명으로 틀린 것은?",
+    "options": [
+      "㉠, ㉡",
+      "㉡, ㉢",
+      "㉢, ㉣",
+      "㉡, ㉣"
+    ],
+    "answer": "1",
+    "explanation": "ㄱ. 전자문서는 암호화된게 아님\nㄴ. 개인정보는 정보통신망에서 삭제됨",
+    "subject": "정보보안 관리 및 법규",
+    "imageName": "정보보안기사_20220625_85_01"
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 86,
+    "question": "조직의 정보보호 교육 대상자에 해당되지 않는 사람은?",
+    "options": [
+      "조직의 중요한 고객",
+      "최고 경영자",
+      "조직의 신입직원",
+      "조직이 제공하는 정보를 이용하는 일부 외부 이용자 그룹"
+    ],
+    "answer": "1",
+    "explanation": "",
+    "subject": "정보보안 관리 및 법규",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 87,
+    "question": "다음 문장은 위험분석에 관한 설명이다. 괄호 안에 들어갈 내용은?",
+    "options": [
+      "㉠ : 위협, ㉡ : 위험, ㉢ : 발생가능성, ㉣ : 취약성",
+      "㉠ : 취약성, ㉡ : 위험, ㉢ : 발생가능성, ㉣ : 위협",
+      "㉠ : 위험, ㉡ : 취약성, ㉢ : 위협, ㉣ : 발생가능성",
+      "㉠ : 발생가능성, ㉡ : 위협, ㉢ : 취약성, ㉣ : 위험"
+    ],
+    "answer": "2",
+    "explanation": "",
+    "subject": "정보보안 관리 및 법규",
+    "imageName": "정보보안기사_20220625_87_01"
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 88,
+    "question": "다음 문장에서 설명하는 위험평가 방법은?",
+    "options": [
+      "기준선 접근법",
+      "비정형 접근법",
+      "상세 위험분석",
+      "복합 접근방법"
+    ],
+    "answer": "1",
+    "explanation": "접근방식에 따른 위험분석 기법\n\n기준선 접근법\n- 모든 시스템의 보호의 기준 수준을 정하고 기준에 따른 보호대책 마련\n- 시간 및 비용이 적고 기본적으로 필요한 보호대책 선택 가능\n- 조직의 특성을 고려하지 않기 때문에, 조직 내에 부서별적정 보안수준보다 높거나 낮게 보안통제가 적용될 수 있음\n\n전문가 판단\n- 전문가의 지식과 경험에 따라서 위험을 분석\n- 작은 조직에서 비용이 효과적이며, 구조화되지 않아 위험을 제대로 평가하기 어렵고 보호대책이나 소요비용이 불합리하게 선정될 수 있다.\n\n상세위험분석\n- 자산가치 , 위협정도, 취약점을 분석하여 위험정도 결정\n- 적정수준의 보안수준 마련\n- 전문적인 지식, 노력이 많이 소요\n- 정성적 분석기법, 정량적 분석기법이 있음\n\n복합적 접근법\n- 시스템의 위험을 확인하여 위험이 높을경우 상세위험분석기법, 그렇지 않을경우 기준선 접근법을 사용\n- 빠른 보안대책 수립으로 시간과 노력을 효율적으로 활용\n- 시스템의 위험도를 명확하게 식별하지 못할경우 시간, 노력, 비용의 낭비가 존재",
+    "subject": "정보보안 관리 및 법규",
+    "imageName": "정보보안기사_20220625_88_01"
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 89,
+    "question": "정보보호관리체계 구축시 발생 가능한 문제점과 해결방안에 대한 설명으로 틀린 것은?",
+    "options": [
+      "관련 부서와의 조정이 곤란하다.",
+      "직원들이 일상 업무에 바빠 관리체계 구축사업에 시간을 내기 어렵다.",
+      "직원들은 자신의 책임을 피하기 위해 문제점이 발생하면 즉시 상사에게 보고하는 경향을 보인다.",
+      "관리체계 구축에는 경영자의 리더십이 필수적으로 요구된다."
+    ],
+    "answer": "3",
+    "explanation": "",
+    "subject": "정보보안 관리 및 법규",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 90,
+    "question": "다음 문장에서 설명하는 시스템 보안평가 기준은?",
+    "options": [
+      "TCSEC",
+      "ITSEC",
+      "CTCPEC",
+      "CC"
+    ],
+    "answer": "3",
+    "explanation": "캐나다 CTCPEC 에서 개발한 평가 기준\n평가기준은 TO~T7까지 8등급으로 구성\n-----------------------------------\n문제에서 마지막 구분은 7등급이 잘못 출제된 것으로 보여짐.",
+    "subject": "정보보안 관리 및 법규",
+    "imageName": "정보보안기사_20220625_90_01"
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 91,
+    "question": "100만명 미만의 정보주체에 관한 개인정보를 보유한 중소기업의 내부관리계획의 내용에 포함되지 않아도 될 사항은?",
+    "options": [
+      "개인정보 보호책임자의 지정에 관한 사항",
+      "개인정보 유출사고 대응 계획 수립·시행에 관한 사항",
+      "개인정보의 암호화 조치에 관한 사항",
+      "개인정보 처리업무를 위탁하는 경우 수탁자에게 대한 관리 및 감독에 관한 사항"
+    ],
+    "answer": "4",
+    "explanation": "내부관리계획:\n- 1만명 미만의 개인, 소상공인, 단체는 내부관리계획 X\n- 100만명 미만: 위험도 분석, 재난 대비, 수탁자 관리 생략 가능",
+    "subject": "정보보안 관리 및 법규",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 92,
+    "question": "비즈니스 연속성에서 고장과 관계된 수용될 수 없는 결과를 피하기 위해 재해 후에 비즈니스가 복귀되어야 하는 최단 시간 및 서비스 수준을 의미하는 것은?",
+    "options": [
+      "RTO",
+      "WRT",
+      "RP",
+      "MTD"
+    ],
+    "answer": "1",
+    "explanation": "RTO(Recovery Time Objective)\n재해 후 시스템,응용,기능들이 반드시 복구 완료되어야 하는 시간",
+    "subject": "정보보안 관리 및 법규",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 93,
+    "question": "정보의 수집·가공·저장·검색·송신·수신 중에 정보의 훼손·변조·유출 등을 방지하기 위한 관리적·기술적 수단인 정보보호의 목적으로 틀린 것은?",
+    "options": [
+      "기밀성 서비스 제공",
+      "무결성 서비스 제공",
+      "가용성 서비스 제공",
+      "추적성 서비스 제공"
+    ],
+    "answer": "4",
+    "explanation": "정보보호 목적: 기밀성, 무결성, 가용성",
+    "subject": "정보보안 관리 및 법규",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 94,
+    "question": "위험분석의 구성요소가 아닌 것은?",
+    "options": [
+      "비용",
+      "취약점",
+      "위협",
+      "자산"
+    ],
+    "answer": "1",
+    "explanation": "위험을 구성하는 4가지 기본요소로는 자산, 위협, 취약성, 정보보호 대책이 있다",
+    "subject": "정보보안 관리 및 법규",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 95,
+    "question": "정보보호의 예방대책을 관리적 예방대책과 기술적 예방대책으로 나누어 볼 때 관리적 예방대책에 속하는 것은?",
+    "options": [
+      "안전한 패스워드를 강제로 사용",
+      "침입차단 시스템을 이용하여 접속을 통제",
+      "가상 사설망을 이용하여 안전한 통신 환경 구현",
+      "문서처리 순서의 표준화"
+    ],
+    "answer": "4",
+    "explanation": "",
+    "subject": "정보보안 관리 및 법규",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 96,
+    "question": "건물 관리 및 화재 등 사고관리를 위해 건물입구를 비추도록 설치된 영상정보처리기기에서 사용할 수 있는 기능으로 옳은 것은?",
+    "options": [
+      "사고를 확인하기 위한 카메라 줌인, 줌아웃",
+      "범인을 추적하기 위한 카메라 이동",
+      "사고 내용을 확인하기 위한 음성 녹음",
+      "사고 내용을 전달하기 위한 영상 전송"
+    ],
+    "answer": "4",
+    "explanation": "건물입구를 비추도록 설치된 영상정보처리기기는 고정형 영상처리기기이며, 개인정보보호법에 의해 \"고정형 영상정보처리기기의 설치 목적과 다른 목적으로 고정형 영상정보처리기기를 임의로 조작하거나 다른 곳을 비춰서는 아니 되며, 녹음기능은 사용할 수 없다.\"\n줌인, 줌아웃 : 임의 조작을 하면 아니 됨\n카메라 이동 : 다른 곳을 비춰서는 아니 됨\n음성 녹음 : 녹음기능을 사용하면 아니 됨",
+    "subject": "정보보안 관리 및 법규",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 97,
+    "question": "다음 문장의 정보보호대책 선정시 영향을 주는 제약사항으로 옳은 것은?",
+    "options": [
+      "환경적 제약",
+      "법적 제약",
+      "시간적 제약",
+      "사회적 제약"
+    ],
+    "answer": "4",
+    "explanation": "",
+    "subject": "정보보안 관리 및 법규",
+    "imageName": "정보보안기사_20220625_97_01"
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 98,
+    "question": "개인정보보호 법령에 따른 영상정보처리기기의 설치·운영과 관련하여 정보주체가 쉽게 인식할 수 있도록 설치하는 안내판의 기재 항목이 아닌 것은?",
+    "options": [
+      "설치 목적",
+      "영상정보 보관기관",
+      "설치 장소",
+      "촬영 범위"
+    ],
+    "answer": "2",
+    "explanation": "",
+    "subject": "정보보안 관리 및 법규",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 99,
+    "question": "개인정보보호법상 개인정보 유출사고의 통지, 신고 의무에 대한 설명으로 틀린 것은?",
+    "options": [
+      "정보통신서비스 제공자등은 개인정보의 유출등의 사실을 안 때에는 지체 없이 유출 등의 내역을 해당 이용자에게 알려야 한다.",
+      "정보통신서비스 제공자등은 1천명 이상의 정보주체에 관한 개인정보의 유출등의 사실을 안 때에는 지체 없이 유출 등의 내역을 방송통신위원회 또는 한국인터넷진흥원에 신고하여야 한다.",
+      "정보통신서비스 제공자등은 정당한 사유 없이 유출 등의 사실을 안 때에는 24시간을 경과하여 통지·신고해서는 아니 된다.",
+      "정보통신서비스 제공자 등은 이용자의 연락처를 알 수 없는 등 정당한 사유가 있는 경우에는 유출 등의 내역을 자신의 인터넷 홈페이지에 30일 이상 게시하여야 한다."
+    ],
+    "answer": "2",
+    "explanation": "개인정보 유출 신고:\n- 개인정보처리자: 5일 이내, 1천명 이상\n- 정보통신서비스 제공자등: 24시간 이내, 1명 이상\n- 상거래기업 및 법인: 5일 이내, 1만명 이상\n출처) 한국인터넷진흥원 - 개인정보 유출 대응 메뉴얼 14p",
+    "subject": "정보보안 관리 및 법규",
+    "imageName": ""
+  },
+  {
+    "licenseName": "정보보안기사",
+    "number": 100,
+    "question": "정보보호 거버넌스 국제 표준으로 옳은 것은?",
+    "options": [
+      "ISO27001",
+      "BS10012",
+      "ISO27014",
+      "ISO27018"
+    ],
+    "answer": "3",
+    "explanation": "ISO 27001 - 정보보호 관리체계 국제표준 (ISMS)\nISO 27014 - 정보보호 거버넌스 국제표준\nISO 27017,18 - 클라우드 정보보호, 개인정보보호 국제표준",
+    "subject": "정보보안 관리 및 법규",
+    "imageName": ""
+  }
+]
