@@ -32,7 +32,7 @@ struct HomeView: View {
     
     // 자격증 선택
     @State private var selectedLicense: String? = nil  // nil이면 미선택 상태
-    @State private var showSections: Bool = true
+    @State private var showSections: Bool = false
     
     // NavigationStack의 경로 관리할 상태 변수
     @State private var path = NavigationPath()
