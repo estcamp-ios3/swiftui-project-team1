@@ -106,7 +106,7 @@ struct StatisticsView: View {
                         Picker("날짜 선택", selection: $selectedSession) {
                             ForEach(filteredSessions, id: \.self) { session in
                                 Text(formattedDate(session.startedAt))
-                                    .tag(session as QuizSession?)
+                                    .tag((session as QuizSession?) ?? QuizSession(licenseName: "", quizType: .short))
                             }
                         }
                         .pickerStyle(.menu)
